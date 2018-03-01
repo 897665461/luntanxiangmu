@@ -23,6 +23,11 @@ class Index extends Controller
     public function zhuceshou(Request $response)
     {
         $res = $response->post();
+
+        if(!$res)
+        {
+            return $this->success('信息错误');
+        }
         extract($res);
         date_default_timezone_set('PRC');
         $ctime = date('Y-m-d H:i:s');
@@ -44,15 +49,100 @@ class Index extends Controller
         }
     }
 
+    /*
+     * 跳转到登陆页
+     * */
 
     public function denglu()
     {
         return $this->fetch();
     }
+    /*
+     * 验证登陆信息，成功则跳转到首页
+     * */
     public function denglushou(Request $request)
     {
         $res = $request->post();
-        var_dump($res);
+        $cond = [];
+        $cond['name'] = $res['user'];
+        //$cond['password'] = md5(md5($res['password']));
+
+        $q = User::get($cond);
+        if($q)
+        {
+            //session_start();   有自动开启sessino的配置项
+            session('user',$res['user']);
+            $this->success('登陆成功','index/index/shouye');
+        }else{
+            $this->success('密码错误，请重新登陆。','index/index/denglu');
+        }
+
     }
+    /*
+     * 跳转到首页
+     * */
+    public function shouye()
+    {
+        $user = session('user');
+        $this->assign('user',$user);
+        return $this->fetch();
+    }
+
+    /*
+     * 删除session
+     * */
+    public function qshouye()
+    {
+        $user = session('user',null);//第二个参数不能为'',否则和session('user')是一样的
+        $this->assign('user',$user);
+        return $this->fetch('shouye');
+    }
+
+    /*
+     * 跳转到发帖页面
+     * */
+    public function fatie()
+    {
+        return $this->fetch();
+    }
+
+    /*
+     * 将帖子的信息保存到数据库
+     * */
+    public function shoutie(Request $request)
+    {
+        var_dump($request->post());
+
+    }
+    /*
+     * 跳转到我的主页
+     * */
+    public function my()
+    {
+        return $this->fetch();
+    }
+    public function shoumy(Request $request)
+    {
+        var_dump($request->post());
+    }
+    /*
+     * 跳转到修改密码界面
+     * */
+    public function password()
+    {
+        return $this->fetch();
+    }
+    /*
+     * 修改数据库中的密码
+     * */
+    public function shoupassword(Request $request)
+    {
+        var_dump($request->post());
+    }
+    public function message()
+    {
+        return $this->fetch();
+    }
+
 
 }

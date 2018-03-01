@@ -4,14 +4,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>慕课论坛</title>
-        <link rel="stylesheet" href="static/css/all-df86af5803.css">
+        <link rel="stylesheet" href="/luntan/public/static/static/css/all-df86af5803.css">
     </head>
     <body class="forum" data-page="forum">
        <div class="header">
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-default">
       <div class="container">
         <div class="navbar-header" id="navbar-header">
-          <a href="shouye.html" class="navbar-brand"><img src="images/logo.png">
+          <a href="shouye.html" class="navbar-brand"><img src="/luntan/public/static/images/logo.png">
         </a>
         </div>
         <div id="main-nav-menu">
@@ -42,14 +42,14 @@
       
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-search hidden-xs hidden-sm">
-            <form method="GET" action="my.html" accept-charset="UTF-8" class="navbar-form form-search active" target="_blank">
+            <form method="GET" action="message.html" accept-charset="UTF-8" class="navbar-form form-search active" target="_blank">
               <div class="form-group">
                 <input placeholder="搜索" class="form-control" name="q" type="search">
               </div>
               <i class="fa fa-search"></i>
             </form>
           </li>
-                                <li class="notification">
+                                <li class="notification active">
             <a href="message.html" class="notification-count "><i class="fa fa-bell"></i><span class="count"></span></a>
           </li>
                   </ul>
@@ -59,79 +59,73 @@
 				                
                 
 				
-<div class="users-show">
+<div class="notifications panel">
 
-  <div class="col-md-3 box">
-    <div style="text-align: center;">
-    <img src="images/avatar.jpg" class="img-thumbnail users-show-avatar upload-btn" style="width: 206px;margin: 4px 4px 15px;min-height:190px;cursor: pointer;">
-</div>
-
-<dl class="dl-horizontal">
-
-  <dt><lable>&nbsp; </lable></dt><dd> ID 967</dd>
-
-  <dt><label>用户名:</label></dt><dd><strong>kphcdr</strong></dd>
-
-  
-  
-  
-  
-  
-    <dt>
-    <label>注册:</label>
-  </dt>
-  <dd><span>2017-02-12 23:48:44</span></dd>
-  </dl>
-<div class="clearfix"></div>
-      <a class="btn btn-primary btn-block" href="my.html" id="user-edit-button">
-      <i class="fa fa-edit"></i> 个人设置
-    </a>
-                   <a class="btn btn-success btn-block" href="###" id="user-edit-button">
-      <i class="fa fa-github"></i> 绑定 Github 账号
-    </a>
-                
+    <div class="panel-heading clearfix">
+      我的通知
+      <span class="pull-right">
+          <a class="btn btn-sm btn-danger" rel="nofollow" data-method="post" data-url="/notification/clean">清空</a>
+      </span>
     </div>
 
-  <div class="col-md-9 left-col">
+    	<div class="panel-body remove-padding-horizontal notification-index content-body">
 
-    <div class="panel panel-default">
-
-      <div class="panel-body ">
-        <ul class="nav nav-tabs" role="tablist">
-          <li ><a href="my.html">个人信息</a></li>
-          <li ><a href="avatar.html">头像</a></li>
-          <li  class="active" ><a href="my.html?tab=password">密码</a></li>
-        </ul>
-                <form class="form-horizontal" method="post" action="/settings/resetPassword" enctype="multipart/form-data">
-            <input type="hidden" name="_token" value="BAnCy9yzQxp30BiIkeU58OMjR5uWeDM9dCSMNwKH">
-            <h5><i class="fa fa-wrench"></i>&nbsp;&nbsp;密码设置</h5><hr>
-            <div class="form-group">
-                <div class="col-sm-4">
-                <input type="password" name="old_password" placeholder="请输入您当前的密码" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-4">
-                <input type="password" name="password" placeholder="请输入新密码" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-4">
-                <input type="password" name="password_confirmation" placeholder="请再次输入新密码" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-4 status-post-submit">
-                <button type="submit" class="btn btn-primary" id="update-password">Update password</button>
-                </div>
-            </div>
-      </form>
-            </div>
-    </div>
+		<ul class="list-group row">
+							<div class="notification-group">
+				<div class="group-title"><i class="fa fa-clock-o"></i> 2017-02-12</div>
+									<div id="notification-2244" data-id="2244" class="media notification notification-topic_reply">
+  <div class="media-left">
+    <a title="kphcdr" class="user-avatar" href="my.html"><img src="images/avatar_small.jpg" alt="967"></a>
   </div>
+  <div class="media-body">
+    
+  <div class="media-heading">
+    <a href="my.html">
+      kphcdr
+    </a>
+     •
+    每日登录获得积分
+  </div>
+    <div class="media-content summary markdown-reply">
+      积分: 
+    5
+    </div>
 
+  </div>
+  <div class="media-right">
+    <span class="timeago">2017-02-12 23:48:45</span>
+  </div>
+</div>									<div id="notification-2243" data-id="2243" class="media notification notification-topic_reply">
+  <div class="media-left">
+    <a title="kphcdr" class="user-avatar" href="my.html"><img src="images/avatar_small.jpg" alt="967"></a>
+  </div>
+  <div class="media-body">
+    
+  <div class="media-heading">
+    <a href="my.html">
+      kphcdr
+    </a>
+     •
+    注册获得积分
+  </div>
+    <div class="media-content summary markdown-reply">
+      积分: 
+    10
+    </div>
 
+  </div>
+  <div class="media-right">
+    <span class="timeago">2017-02-12 23:48:44</span>
+  </div>
+</div>								</div>
+					</ul>
+	</div>
+	<div class="panel-footer text-right remove-padding-horizontal pager-footer">
+		<!-- Pager -->
+	</div>
+    
 </div>
+
 
 
                 		</div>
