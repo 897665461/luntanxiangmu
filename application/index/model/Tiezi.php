@@ -23,8 +23,9 @@ class Tiezi extends Model
         $fenye['yema'] = $yema;
         return $fenye;
     }
-    public function xiangqing()
+    public function xiangqing($id)
     {
+        return Db::table('luntan_tiezi')->where('id','eq',"$id")->select();
 
     }
 

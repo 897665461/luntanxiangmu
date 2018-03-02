@@ -74,18 +74,18 @@
                         <img src="/luntan/public/static/images/avatar.jpg" class="media-object img-thumbnail avatar-64"/>
                     </a>
                 </div>
-                <h1 class="panel-title thread-title">imooc 接下来需要完善的功能</h1>
+                <h1 class="panel-title thread-title">{$xiangqing['title']}</h1>
                 <div class="likes">
                     <a href="javascript:void(0);" data-action="like" data-type="Thread" data-url="#" title="赞"
                        class="fa fa-chevron-up likeable like" data-id="10"> 10</a>
                     <a href="javascript:void(0);" data-action="unlike" data-type="Thread" data-url="#" title="踩" class="fa fa-chevron-down likeable like" data-id="10"></a>
                 </div>
                 <div class="meta inline-block">
-                    <a href="tag.html" class="remove-padding-left"> 站务与公告 </a> •
-                    <a href="my.html"> BBS </a>• 于 <abbr title="2016-06-10 02:28:36" class="timeago">2016-06-10 02:28:36</abbr> •
+                    <a href="/luntan/public/index.php/index/index/tag.html" class="remove-padding-left"> 站务与公告 </a> •
+                    <a href="/luntan/public/index.php/index/index/my.html"> BBS </a>• 于 <abbr title="2016-06-10 02:28:36" class="timeago">{$xiangqing['create_at']}</abbr> •
                     回复
-                    <a href="my.html"> memory </a> 于
-                    <abbr title="2017-02-08 21:47:25" class="timeago">2017-02-08 21:47:25</abbr>
+                    <a href="/luntan/public/index.php/index/index/my.html"> memory </a> 于
+                    <abbr title="2017-02-08 21:47:25" class="timeago">{$xiangqing['create_at']}</abbr>
                     •4050 阅读
                 </div>
                 <div class="clearfix"></div>
@@ -93,25 +93,34 @@
             <div class="panel-body content-body">
                 <div class="markdown-body" id="emojify">
                     <ul>
-                        <li>欢迎来到慕课BBS</li>
+                        <li>{$xiangqing['content']}</li>
                     </ul>
                 </div>
             </div>
             <div class="panel-footer operate">
                 <div class="pull-left" style="font-size:15px;">
-                    <a class=""
-                       href="http://service.weibo.com/share/share.php?url=http%3A%2F%2Fimooc.com%2Fthread%2F10&type=3&pic=&title=imooc 接下来需要完善的功能"
-                       target="_blank" title="分享到微博"> <i class="fa fa-weibo"></i> </a> <a
-                        href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fimooc.com%2Fthread%2F10&text=imooc 接下来需要完善的功能&via=imooc.com"
-                        class="" target="_blank" title="分享到 Twitter"> <i class="fa fa-twitter"></i> </a> <a
-                        href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fimooc.com%2Fthread%2F10" class=""
-                        target="_blank" title="分享到 Facebook"> <i class="fa fa-facebook"></i> </a> <a
-                        href="https://plus.google.com/share?url=http%3A%2F%2Fimooc.com%2Fthread%2F10" class=""
-                        target="_blank" title="分享到 Google Plus"> <i class="fa fa-google-plus"></i> </a>
+                    <a class="" href="http://service.weibo.com/share/share.php?url=http%3A%2F%2Fimooc.com%2Fthread%2F10&type=3&pic=&title=imooc 接下来需要完善的功能" target="_blank" title="分享到微博">
+                        <i class="fa fa-weibo">
+                        </i>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fimooc.com%2Fthread%2F10&text=imooc 接下来需要完善的功能&via=imooc.com" class="" target="_blank" title="分享到 Twitter">
+                        <i class="fa fa-twitter">
+                        </i>
+                    </a>
+                    <a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fimooc.com%2Fthread%2F10" class="" target="_blank" title="分享到 Facebook">
+                        <i class="fa fa-facebook">
+                        </i>
+                    </a>
+                    <a href="https://plus.google.com/share?url=http%3A%2F%2Fimooc.com%2Fthread%2F10" class="" target="_blank" title="分享到 Google Plus">
+                        <i class="fa fa-google-plus">
+                        </i>
+                    </a>
                 </div>
                 <div class="pull-right">
                     <span class="tag-list hidden-xs">Tags:
-                        <a href="tag.html"><span class="tag">imooc</span></a>
+                        <a href="/luntan/public/index.php/index/index/tag.html">
+                            <span class="tag">{$biaoqian}</span>
+                        </a>
                     </span>
                 </div>
                 <div class="clearfix"></div>
@@ -152,7 +161,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Reply List -->
         <div class="replies panel panel-default list-panel replies-index">
             <div class="panel-heading">
@@ -164,60 +172,60 @@
                 <ul class="list-group row">
                     <li class="list-group-item media " id="reply11">
                         <div class="avatar pull-left">
-                            <a href="my.html"> <img class="media-object img-thumbnail avatar" alt="strdemo"
-                                                        src="images/avatar_small.jpg" style="width:48px;height:48px;"/>
+                            <a href="my.html">
+                                <img class="media-object img-thumbnail avatar" alt="strdemo" src="/luntan/public/static/images/avatar_small.jpg" style="width:48px;height:48px;"/>
                             </a>
                         </div>
                         <div class="infos">
 
                             <div class="media-heading meta">
-
-                                <a href="my.html" title="strdemo" class="remove-padding-left author"> strdemo </a>
-                                <abbr class="timeago" title="2016-06-14 21:19:02">2016-06-14 21:19:02</abbr> <a
-                                    name="reply1" class="anchor" href="#reply1" aria-hidden="true">#1</a>
-
+                                <a href="/luntan/public/index.php/index/index/my.html" title="strdemo" class="remove-padding-left author"> strdemo </a>
+                                <abbr class="timeago" title="2016-06-14 21:19:02">2016-06-14 21:19:02</abbr>
+                                <a name="reply1" class="anchor" href="#reply1" aria-hidden="true">#1</a>
                                 <span class="opts pull-right">
-          <span class="hideable">
-                        <a class="fa fa-reply btn-reply2reply" data-floor=1 data-username="strdemo" href="#"
-                           title="回复 strdemo"></a>
-          </span>
-          <a class="likeable fa fa-thumbs-o-up" data-action="like" data-url="###/like" data-type="Reply" data-id="11"
-             data-count="0" href="javascript:void(0);" title="赞">
-          </a>
-        </span>
-
+                                    <span class="hideable">
+                                        <a class="fa fa-reply btn-reply2reply" data-floor=1 data-username="strdemo" href="#" title="回复 strdemo">
+                                        </a>
+                                    </span>
+                                    <a class="likeable fa fa-thumbs-o-up" data-action="like" data-url="###/like" data-type="Reply" data-id="11"
+                                       data-count="0" href="javascript:void(0);" title="赞">
+                                    </a>
+                                </span>
                             </div>
-
                             <div class="media-body markdown-reply content-body">
-                                <p>支持，不错的系统啊，加油！
-                                </p>
+                                <p>支持，不错的系统啊，加油！</p>
+                                <a href="">回复</a>
                             </div>
                         </div>
                     </li>
-
                 </ul>
                 <!-- Pager -->
                 <div class="pull-right" style="padding-right:20px">
-
                 </div>
             </div>
         </div>
-
         <!-- Reply Box -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                发表回复
+                <form name="reply" action="/luntan/public/index.php/index/replyl/reply" method="post">
+                    <input type="hidden" value="{$xiangqing['id']}" name="id">
+                    <textarea name="reply" cols="130" rows="10">
+
+                    </textarea>
+                    <input type="submit" value="回复">
+                </form>
             </div>
             <div class="panel-body">
                 <div class="reply-box form">
-                    <div style="padding:20px;">
-                        需要 <a class="btn btn-success" href="login.html">登录</a> 后方可回复, 如果你还没有账号请点击这里 <a
-                            class="btn btn-primary" href="register.html">注册</a>。
+                    {if  condition="$user===null"}
+                    <div style="padding:20px;">需要
+                        <a class="btn btn-success" href="/luntan/public/index.php/index/index/denglu.html">登录</a> 后方可回复, 如果你还没有账号请点击这里
+                        <a class="btn btn-primary" href="/luntan/public/index.php/index/index/zhuce.html">注册1</a>。
                     </div>
+                    {/if}
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="col-md-3 side-bar">
@@ -225,14 +233,26 @@
             <div class="panel-heading">
                 <h3 class="panel-title">BBS</h3>
             </div>
+            {if  condition="$user!==null"}
+
             <div class="panel-body text-center">
-                <a href="register.html" class="btn btn-primary"> <i class="fa fa-user"> </i> 注册 </a>
+            <a href="/luntan/public/index.php/index/index/fatie.html" class="btn btn-primary">
+                <i class="fa fa-user"> </i> 发帖 </a>
+            </div>
+
+            {else}
+
+            <div class="panel-body text-center">
+                <a href="/luntan/public/index.php/index/index/zhuce.html" class="btn btn-primary">
+                    <i class="fa fa-user"> </i> 注册 </a>
             </div>
             <div class="panel-footer text-center">
-                已注册用户请 <a href="login.html">登录</a>
+                已注册用户请 <a href="/luntan/public/index.php/index/index/denglu.html">登录</a>
             </div>
-        </div>
 
+            {/if}
+
+        </div>
         <div class="panel panel-default corner-radius">
             <div class="panel-heading">
                 <h3 class="panel-title">小贴士</h3>
@@ -264,9 +284,10 @@
             <blockquote class="pull-left">
                 <p>慕课论坛</p>
                 <p>Copyright &copy; 2015-2016
-                    <a href="/luntan/public/index.php/index/index/shouye">imooc</a> 1.0.0-rc2 <span
-                        class="pipe">|</span>
-                    <span class="pipe">|</span></p>
+                    <a href="/luntan/public/index.php/index/index/shouye">imooc</a> 1.0.0-rc2
+                    <span class="pipe">|</span>
+                    <span class="pipe">|</span>
+                </p>
             </blockquote>
         </div>
         <div class="pull-right hidden-sm hidden-xs">

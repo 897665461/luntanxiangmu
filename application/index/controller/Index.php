@@ -133,8 +133,29 @@ class Index extends Controller
         $tiezi->save();
         $this->success('发帖成功','index/index/fatie');
 
-
     }
+    /*
+     * 转到帖子回复界面
+     * */
+    public function post(Request $request)
+    {
+        $id = $request->get('id');
+
+        $tiezi = new Tiezi();
+        $xiangqing = $tiezi->xiangqing($id);
+        $this->assign('xiangqing',$xiangqing[0]);
+
+        $tag = new Tag();
+        $biaoqian = $tag->ttag($xiangqing['0']['tag_id']);
+        $this->assign('biaoqian',$biaoqian['0']['name']);
+
+
+        $this->assign('user',session('user'));
+        return $this->fetch();
+    }
+
+
+
     /*
      * 退出
      * 即删除session，跳转到登陆界面
@@ -188,14 +209,7 @@ class Index extends Controller
         $this->assign('user',session('user'));
         return $this->fetch();
     }
-    /*
-     * 转到帖子回复界面
-     * */
-    public function post()
-    {
-        $this->assign('user',session('user'));
-        return $this->fetch();
-    }
+
     /*
      * 转到帖子积分界面
      * */

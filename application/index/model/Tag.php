@@ -9,5 +9,9 @@ class Tag extends Model
     {
         return Db::table('luntan_tag')->field('id,name')->select();
     }
+    public function ttag($id)
+    {
+        return Db::table('luntan_tag')->field('name')->where('id','eq',$id)->select();
+    }
 
 }
