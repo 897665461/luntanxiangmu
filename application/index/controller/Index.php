@@ -139,10 +139,51 @@ class Index extends Controller
     {
         var_dump($request->post());
     }
+    /*
+     *跳转到通知页面
+     * */
     public function message()
+    {
+        $user = session('user');
+        $this->assign('user',$user);
+        return $this->fetch();
+    }
+    /*
+     * 转到头像界面
+     * */
+    public function avatar()
     {
         return $this->fetch();
     }
+    /*
+     * 转到帖子回复界面
+     * */
+    public function post()
+    {
+        return $this->fetch();
+    }
+    /*
+     * 转到帖子积分界面
+     * */
+    public function score()
+    {
+        return $this->fetch();
+    }
+    /*
+     * 转到帖子主题界面
+     * */
+    public function tag()
+    {
+        return $this->fetch();
+    }
+    /*
+     * 转到帖子话题界面
+     * */
+    public function thread()
+    {
+        return $this->fetch();
+    }
+
 
 
 }

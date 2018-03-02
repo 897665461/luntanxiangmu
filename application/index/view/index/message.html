@@ -11,31 +11,42 @@
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-default">
       <div class="container">
         <div class="navbar-header" id="navbar-header">
-          <a href="shouye.html" class="navbar-brand"><img src="/luntan/public/static/images/logo.png">
+          <a href="/luntan/public/index.php/index/index/shouye" class="navbar-brand"><img src="/luntan/public/static/images/logo.png">
         </a>
         </div>
         <div id="main-nav-menu">
           <ul class="nav navbar-nav">
           <li ><a href="shouye.html"><i class="fa fa-home"></i> <span class="hidden-xs hidden-sm">首页</span></a></li>
           <li class="hidden-sm hidden-xs"><a href="thread.html"><i class="fa fa-comments-o"></i> 话题</a></li>
-          
           </ul>
         </div>
-                <ul class="nav user-bar navbar-nav navbar-right">
+          <ul class="nav user-bar navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">kphcdr <span class="caret"></span></a>
+            <a href="/luntan/public/index.php/index/index/my" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {$user}
+                <span class="caret"> </span>
+            </a>
+
             <button class="navbar-toggle" type="button" data-toggle="dropdown" role="button" aria-expanded="false">
               <span class="sr-only">Toggle</span>
               <i class="fa fa-reorder"></i>
             </button>
-            <ul class="dropdown-menu" role="menu"><li class=""><a href="my.html">我的主页</a></li>
-            <li><div class='divider'></div></li>
-                <li><a href="my.html">个人设置</a></li>
 
+            <ul class="dropdown-menu" role="menu">
+                <li class="">
+                <a href="/luntan/public/index.php/index/index/my">我的主页</a>
+                </li>
+
+                <li>
+                <div class='divider'></div></li>
+                <li><a href="my.html">个人设置</a></li>
                 <li><a href="score.html">我的积分</a></li>
                 <li class='divider'></li>
-                <li><a href="###" onclick=" return confirm('你确定要退出吗?')"><i class="fa fa-sign-out"></i> 退出
-                    </a></li>
+                <li>
+                    <a href="###" onclick=" return confirm('你确定要退出吗?')"><i class="fa fa-sign-out"></i> 退出
+                    </a>
+                </li>
+            </ul>
             </ul>
           </li>
         </ul>
@@ -49,49 +60,32 @@
               <i class="fa fa-search"></i>
             </form>
           </li>
-                                <li class="notification active">
-            <a href="message.html" class="notification-count "><i class="fa fa-bell"></i><span class="count"></span></a>
+            <li class="notification active">
+            <a href="message.html" class="notification-count ">
+                <i class="fa fa-bell"></i>
+                <span class="count"></span>
+            </a>
           </li>
-                  </ul>
+        </ul>
       </div>
     </nav>
-  </div>		<div id="main" class="main-container container">
-				                
-                
-				
-<div class="notifications panel">
-
-    <div class="panel-heading clearfix">
-      我的通知
-      <span class="pull-right">
-          <a class="btn btn-sm btn-danger" rel="nofollow" data-method="post" data-url="/notification/clean">清空</a>
-      </span>
-    </div>
-
-    	<div class="panel-body remove-padding-horizontal notification-index content-body">
-
-		<ul class="list-group row">
-							<div class="notification-group">
-				<div class="group-title"><i class="fa fa-clock-o"></i> 2017-02-12</div>
-									<div id="notification-2244" data-id="2244" class="media notification notification-topic_reply">
-  <div class="media-left">
-    <a title="kphcdr" class="user-avatar" href="my.html"><img src="images/avatar_small.jpg" alt="967"></a>
   </div>
-  <div class="media-body">
-    
-  <div class="media-heading">
-    <a href="my.html">
-      kphcdr
-    </a>
-     •
-    每日登录获得积分
-  </div>
-    <div class="media-content summary markdown-reply">
-      积分: 
-    5
-    </div>
-
-  </div>
+       <div id="main" class="main-container container">
+           <div class="notifications panel">
+               <div class="panel-heading clearfix">我的通知
+                   <span class="pull-right">
+                       <a class="btn btn-sm btn-danger" rel="nofollow" data-method="post" data-url="/notification/clean">清空</a></span></div>
+               <div class="panel-body remove-padding-horizontal notification-index content-body">
+                   <ul class="list-group row">
+                       <div class="notification-group"><div class="group-title"><i class="fa fa-clock-o"></i> 2017-02-12</div>
+                           <div id="notification-2244" data-id="2244" class="media notification notification-topic_reply">
+                               <div class="media-left">
+                                   <a title="kphcdr" class="user-avatar" href="my.html"><img src="images/avatar_small.jpg" alt="967"></a></div>
+                               <div class="media-body">
+                                   <div class="media-heading"><a href="my.html">kphcdr</a>
+                                       •每日登录获得积分</div>
+                                   <div class="media-content summary markdown-reply">积分:5</div>
+                               </div>
   <div class="media-right">
     <span class="timeago">2017-02-12 23:48:45</span>
   </div>
@@ -125,13 +119,10 @@
 	</div>
     
 </div>
+       </div>
 
-
-
-                		</div>
-
-        <footer class="footer">
-    <div class="container">
+       <footer class="footer">
+           <div class="container">
         <div class="copyright">
             <blockquote class="pull-left">
                 <p>慕课论坛</p>
