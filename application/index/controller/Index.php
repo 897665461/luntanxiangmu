@@ -1,19 +1,23 @@
 <?php
 namespace app\index\controller;
 use app\index\model\User;
+use app\index\model\Tiezi;
+use app\index\model\Tag;
 use think\Controller;
-use think\View;
 use think\Request;
+use think\Db;
+use think\View;
+
 
 class Index extends Controller
 {
-    public function index()
+    public $user_id;//这样写为什么不能在类的所有方法中使用？
+    /*
+     * 跳转到注册页面
+     * */
+    public function zhuce( )
     {
-        return '<style type="text/css">*{ padding: 0; margin: 0; } .think_default_text{ padding: 4px 48px;} a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; } body{ background: #fff; font-family: "Century Gothic","Microsoft yahei"; color: #333;font-size:18px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 42px }</style><div style="padding: 24px 48px;"> <h1>:)</h1><p> ThinkPHP V5<br/><span style="font-size:30px">十年磨一剑 - 为API开发设计的高性能框架</span></p><span style="font-size:22px;">[ V5.0 版本由 <a href="http://www.qiniu.com" target="qiniu">七牛云</a> 独家赞助发布 ]</span></div><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_bd568ce7058a1091"></thinkad>';
-    }
-    public function zhuce()
-   {
-       return $this->fetch();
+        return $this->fetch();
     }
     /*
      * 接受密码
@@ -71,8 +75,10 @@ class Index extends Controller
         if($q)
         {
             //session_start();   有自动开启sessino的配置项
+           // $this->user_id = $q['id'];这样写并不成功
+            session('user_id',$q['id']);
             session('user',$res['user']);
-            $this->success('登陆成功','index/index/shouye');
+           $this->success('登陆成功','index/index/shouye');
         }else{
             $this->success('密码错误，请重新登陆。','index/index/denglu');
         }
@@ -81,21 +87,18 @@ class Index extends Controller
     /*
      * 跳转到首页
      * */
-    public function shouye()
+    public function shouye(Request $request)
     {
-        $user = session('user');
-        $this->assign('user',$user);
-        return $this->fetch();
-    }
 
-    /*
-     * 删除session
-     * */
-    public function qshouye()
-    {
-        $user = session('user',null);//第二个参数不能为'',否则和session('user')是一样的
-        $this->assign('user',$user);
-        return $this->fetch('shouye');
+        $yema = empty($_GET['yema'])?1:$_GET['yema'];
+        $tiezi = new Tiezi();
+        $fenye = $tiezi->liebiao($yema);
+        $liebiao = array_shift($fenye);
+        $this->assign('liebiao',$liebiao);
+        $this->assign('fenye',$fenye);
+        $this->assign('user', session('user'));
+        //var_dump($liebiao);
+        return $this->fetch();
     }
 
     /*
@@ -103,17 +106,46 @@ class Index extends Controller
      * */
     public function fatie()
     {
-        return $this->fetch();
+        $tag = new Tag();
+        $tag = $tag->tag();
+        //var_dump($tag);
+        $this->assign('user', session('user'));
+        $this->assign('tag',$tag);
+       return $this->fetch();
     }
-
     /*
-     * 将帖子的信息保存到数据库
+     * 从相应的数据库中取出相应信息
+     * 再将帖子的信息保存到数据库
      * */
     public function shoutie(Request $request)
     {
-        var_dump($request->post());
+        extract($request->post());
+        $tiezi = new Tiezi();
+        $tiezi->title = $title ;
+        $tiezi->content = $content;
+        $tiezi->user_id= session('user_id');
+        $tiezi->category_id= $category;
+        list($weimiao,$time) = explode(' ',microtime());
+        $tiezi->create_at = $time+$weimiao;
+        $tiezi->is_del =  0;
+        $tiezi->tag_id = $tag;
+
+        $tiezi->save();
+        $this->success('发帖成功','index/index/fatie');
+
 
     }
+    /*
+     * 退出
+     * 即删除session，跳转到登陆界面
+     * */
+    public function tuichu()
+    {
+        $user = session('user',null);//第二个参数不能为'',否则和session('user')是一样的
+        return $this->fetch('denglu');
+    }
+
+
     /*
      * 跳转到我的主页
      * */
@@ -144,8 +176,8 @@ class Index extends Controller
      * */
     public function message()
     {
-        $user = session('user');
-        $this->assign('user',$user);
+
+        $this->assign('user',session('user'));
         return $this->fetch();
     }
     /*
@@ -153,6 +185,7 @@ class Index extends Controller
      * */
     public function avatar()
     {
+        $this->assign('user',session('user'));
         return $this->fetch();
     }
     /*
@@ -160,6 +193,7 @@ class Index extends Controller
      * */
     public function post()
     {
+        $this->assign('user',session('user'));
         return $this->fetch();
     }
     /*
@@ -167,6 +201,7 @@ class Index extends Controller
      * */
     public function score()
     {
+        $this->assign('user',session('user'));
         return $this->fetch();
     }
     /*
@@ -174,6 +209,7 @@ class Index extends Controller
      * */
     public function tag()
     {
+        $this->assign('user',session('user'));
         return $this->fetch();
     }
     /*
@@ -181,6 +217,7 @@ class Index extends Controller
      * */
     public function thread()
     {
+        $this->assign('user',session('user'));
         return $this->fetch();
     }
 

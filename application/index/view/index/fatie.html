@@ -24,13 +24,16 @@
               </a>
           </li>
           <li class="hidden-sm hidden-xs active">
-              <a href="thread.html"><i class="fa fa-comments-o"></i> 话题</a>
+              <a href="/luntan/public/index.php/index/index/thread.html">
+                  <i class="fa fa-comments-o"></i> 话题
+              </a>
           </li>
           </ul>
         </div>
-                <ul class="nav user-bar navbar-nav navbar-right">
+          <ul class="nav user-bar navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">kphcdr
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {$user}
                 <span class="caret"></span></a>
             <button class="navbar-toggle" type="button" data-toggle="dropdown" role="button" aria-expanded="false">
               <span class="sr-only">Toggle</span>
@@ -90,10 +93,10 @@
                         <form method="POST" action="/luntan/public/index.php/index/index/shoutie" accept-charset="UTF-8" id="thread_create_form" class="create_form">
                             <input name="_token" type="hidden" value="BAnCy9yzQxp30BiIkeU58OMjR5uWeDM9dCSMNwKH">
                             <div class="form-group">
-                                <input class="form-control" id="thread_title" placeholder="标题" name="thread[title]" type="text">
+                                <input class="form-control" id="thread_title" placeholder="标题" name="title" type="text">
                             </div>
                             <div class="form-group">
-                                <select class="form-control selectpicker" name="thread[node_id]">
+                                <select class="form-control selectpicker" name="category">
                                     <option value="" disabled selected>选择节点</option>
                                     <optgroup label="imooc">
                                         <option value="1"  >- 站务与公告</option>
@@ -147,11 +150,12 @@
 
                             <!-- end -->
                             <div class="form-group">
-                                <textarea class="post-editor form-control" rows="15" style="overflow:hidden" id="body_field" placeholder="请使用Markdown撰写内容" name="thread[body]" cols="50"></textarea></div>
+                                <textarea class="post-editor form-control" rows="15" style="overflow:hidden" id="body_field" placeholder="请使用Markdown撰写内容" name="content" cols="50"></textarea></div>
                             <div class="form-group">
-                                <select class="form-control js-tag-tokenizer" multiple="multiple" name="thread[tags][]">
-                                    <option>rwerwerwer</option>
-                                    <option>48948948</option>
+                                <select class="form-control js-tag-tokenizer" multiple="multiple" name="tag">
+                                    {foreach $tag as $t}
+                                    <option value="{$t['id']}">{$t['name']}</option>
+                                    {/foreach}
                                 </select>
                                 <small>请写标签，多个标签之间用 , 分隔</small>
                             </div>
@@ -216,9 +220,11 @@
         <div class="copyright">
             <blockquote class="pull-left">
                 <p>慕课论坛</p>
-                <p>Copyright &copy; 2015-2016 <a href="/luntan/public/index.php/index/index/shouye">imooc</a>  1.0.0-rc2
+                <p>Copyright &copy; 2015-2016
+                    <a href="/luntan/public/index.php/index/index/shouye">imooc</a>  1.0.0-rc2
                     <span class="pipe">|</span>
-                    <span class="pipe">|</span></p>
+                    <span class="pipe">|</span>
+                </p>
             </blockquote>
         </div>
         <div class="pull-right hidden-sm hidden-xs">
@@ -230,7 +236,8 @@
                 <a href="###">常见问题解答</a>
             </p>
             <p>
-                <a href="/luntan/public/index.php/index/index/shouye" target="_blank"><img src="/luntan/public/static/images/imooc-logo.png" border="0" height="40" data-toggle="tooltip" data-placement="top" title="Powered by imooc" />
+                <a href="/luntan/public/index.php/index/index/shouye" target="_blank">
+                    <img src="/luntan/public/static/images/imooc-logo.png" border="0" height="40" data-toggle="tooltip" data-placement="top" title="Powered by imooc" />
                 </a>
             </p>
         </div>
