@@ -11,19 +11,27 @@
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-default">
       <div class="container">
         <div class="navbar-header" id="navbar-header">
-          <a href="/luntan/public/index.php/index/index/shouye" class="navbar-brand"><img src="/luntan/public/static/images/logo.png">
-        </a>
+          <a href="/luntan/public/index.php/index/index/shouye" class="navbar-brand">
+              <img src="/luntan/public/static/images/logo.png">
+          </a>
         </div>
         <div id="main-nav-menu">
           <ul class="nav navbar-nav">
-          <li ><a href="/luntan/public/index.php/index/index/shouye"><i class="fa fa-home"></i> <span class="hidden-xs hidden-sm">首页</span></a></li>
-          <li class="hidden-sm hidden-xs"><a href="thread.html"><i class="fa fa-comments-o"></i> 话题</a></li>
-          
+          <li ><a href="/luntan/public/index.php/index/index/shouye">
+              <i class="fa fa-home"></i>
+              <span class="hidden-xs hidden-sm">首页</span>
+          </a>
+          </li>
+          <li class="hidden-sm hidden-xs">
+              <a href="thread.html">
+              <i class="fa fa-comments-o"></i> 话题
+              </a>
+          </li>
           </ul>
         </div>
-                <ul class="nav user-bar navbar-nav navbar-right">
+          <ul class="nav user-bar navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">kphcdr <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">kphcdr 5<span class="caret"></span></a>
             <button class="navbar-toggle" type="button" data-toggle="dropdown" role="button" aria-expanded="false">
               <span class="sr-only">Toggle</span>
               <i class="fa fa-reorder"></i>
@@ -35,7 +43,8 @@
                 <li><a href="score.html">我的积分</a></li>
                 <li class='divider'></li>
                 <li><a href="/luntan/public/index.php/index/index/qshouye" onclick=" return confirm('你确定要退出吗?')"><i class="fa fa-sign-out"></i> 退出
-                    </a></li>
+                </a>
+                </li>
             </ul>
           </li>
         </ul>
@@ -49,97 +58,84 @@
               <i class="fa fa-search"></i>
             </form>
           </li>
-                                <li class="notification">
+            <li class="notification">
             <a href="message.html" class="notification-count "><i class="fa fa-bell"></i><span class="count"></span></a>
           </li>
-                  </ul>
+        </ul>
       </div>
     </nav>
-  </div>		<div id="main" class="main-container container">
+       </div>
+       <div id="main" class="main-container container">
 				                
                 
 				
 <div class="users-show">
-
-  <div class="col-md-3 box">
+    <div class="col-md-3 box">
     <div style="text-align: center;">
-    <img src="/luntan/public/static/images/avatar.jpg" class="img-thumbnail users-show-avatar upload-btn" style="width: 206px;margin: 4px 4px 15px;min-height:190px;cursor: pointer;">
+    <img src="/luntan/public/static/images/11.png" class="img-thumbnail users-show-avatar upload-btn" style="width: 206px;margin: 4px 4px 15px;min-height:190px;cursor: pointer;">
 </div>
 
 <dl class="dl-horizontal">
-
-  <dt><lable>&nbsp; </lable></dt><dd> ID 967</dd>
-
-  <dt><label>用户名:</label></dt><dd><strong>kphcdr</strong></dd>
-
-  
-  
-  
-  
-  
-    <dt>
-    <label>注册:</label>
-  </dt>
-  <dd><span>2017-02-12 23:48:44</span></dd>
+    <dt><lable>&nbsp; </lable></dt><dd> ID 967</dd>
+    <dt><label>用户名:</label></dt><dd><strong>kphcdr</strong></dd>
+    <dt><label>注册:</label></dt>
+    <dd><span>2017-02-12 23:48:44</span></dd>
   </dl>
 <div class="clearfix"></div>
-      <a class="btn btn-primary btn-block" href="my.html" id="user-edit-button">
+      <a class="btn btn-primary btn-block" href="/luntan/public/index.php/index/index/my.html" id="user-edit-button">
       <i class="fa fa-edit"></i> 个人设置
-    </a>
+      </a>
       <a class="btn btn-success btn-block" href="###" id="user-edit-button">
       <i class="fa fa-github"></i> 绑定 Github 账号
-    </a>
-                
-    </div>
+      </a>
+  </div>
 
   <div class="col-md-9 left-col">
-
-    <div class="panel panel-default">
-
-      <div class="panel-body ">
-        <ul class="nav nav-tabs" role="tablist">
-          <li  class="active" >
+      <div class="panel panel-default">
+          <div class="panel-body "><ul class="nav nav-tabs" role="tablist"><li  class="active" >
               <a href="my.html">个人信息</a></li>
-          <li ><a href="avatar.html">头像</a></li>
-          <li ><a href="my.html?tab=password">密码</a></li>
-        </ul>
-          <form method="POST" action="/luntan/public/index.php/index/index/shoumy" accept-charset="UTF-8">
-                  <input name="_method" type="hidden" value="PATCH">
-                  <input name="_token" type="hidden" value="BAnCy9yzQxp30BiIkeU58OMjR5uWeDM9dCSMNwKH">
-          <h5><i class="fa fa-tasks"></i>&nbsp;&nbsp;个人信息</h5>
-          <div class="form-group">
-            <input class="form-control" placeholder="昵称" name="nickname" type="text">
-          </div>
-          <div class="form-group">
-            <input class="form-control" placeholder="城市" name="location" type="text">
-            <div class="help-block">请用中文填写所在城市</div>
-          </div>
-          <div class="form-group">
-            <input class="form-control" placeholder="公司" name="company" type="text">
-          </div>
-          <div class="form-group">
-            <input class="form-control" placeholder="网址" name="website" type="text">
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" rows="3" placeholder="个性签名" name="signature" cols="50"></textarea>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" rows="3" placeholder="自我介绍" name="bio" cols="50"></textarea>
-          </div>
-          <div class="form-group">
-              <label>系统语言</label>
-              <select name="locale" class="form-control" required>
-                  <option value="">Select Language</option>
-                  <option value="de" >Deutsch</option>
-                  <option value="en" >English</option>
-                  <option value="zh-CN" >简体中文</option>
-              </select>
-          </div>
-          <div class="form-group status-post-submit">
-            <input class="btn btn-primary" id="user-edit-submit" type="submit" value="更新">
-          </div>
-        </form>
-            </div>
+              <li ><a href="/luntan/public/index.php/index/index/avatar.html">头像</a></li>
+              <li ><a href="/luntan/public/index.php/index/index/my.html?tab=password">密码</a></li>
+          </ul>
+
+          <form method="POST" action="/luntan/public/index.php/index/myl/shoumy" accept-charset="UTF-8">
+              <input name="_method" type="hidden" value="PATCH">
+              <input name="_token" type="hidden" value="BAnCy9yzQxp30BiIkeU58OMjR5uWeDM9dCSMNwKH">
+              <h5>
+              <i class="fa fa-tasks"></i>&nbsp;&nbsp;个人信息</h5>
+              <div class="form-group">
+                  <input class="form-control" placeholder="昵称" name="name" type="text" value="44545">
+              </div>
+              <div class="form-group">
+                  <input class="form-control" placeholder="城市" name="city" type="text" value="{$xmy['city']}">
+                  <div class="help-block">请用中文填写所在城市</div>
+              </div>
+              <div class="form-group">
+                  <input class="form-control" placeholder="公司" name="company" value="{$xmy['company']}" type="text">
+              </div>
+              <div class="form-group">
+                  <input class="form-control" placeholder="网址" name="wangzhi" value="{$xmy['wangzhi']}" type="text">
+              </div>
+              <div class="form-group">
+                  <textarea class="form-control" rows="3" placeholder="个性签名" name="qianming" cols="50">{$xmy['qianming']}</textarea>
+              </div>
+              <div class="form-group">
+                  <textarea class="form-control" rows="3" placeholder="自我介绍" name="jieshao" cols="50">{$xmy['jieshao']}</textarea>
+              </div>
+              <div class="form-group">
+                  <label>系统语言</label>
+                  <select name="language" class="form-control" required>
+                      <option value="">Select Language</option>
+                      <option value="de" >Deutsch</option>
+                      <option value="en" >English</option>
+                      <option value="zh-CN" >简体中文</option>
+                  </select>
+              </div>
+              <div class="form-group status-post-submit">
+                  <input class="btn btn-primary" id="user-edit-submit" type="submit" value="更新">
+              </div>
+          </form>
+      </div>
     </div>
   </div>
 </div>

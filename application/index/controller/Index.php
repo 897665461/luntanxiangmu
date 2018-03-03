@@ -1,5 +1,6 @@
 <?php
 namespace app\index\controller;
+use app\index\model\My;
 use app\index\model\User;
 use app\index\model\Tiezi;
 use app\index\model\Tag;
@@ -10,7 +11,7 @@ use think\Db;
 
 class Index extends Controller
 {
-    public $user_id;//这样写为什么不能在类的所有方法中使用？
+    public $user_id;
     /*
      * 跳转到注册页面
      * */
@@ -26,7 +27,6 @@ class Index extends Controller
     public function zhuceshou(Request $response)
     {
         $res = $response->post();
-
         if(!$res)
         {
             return $this->success('信息错误');
@@ -38,7 +38,6 @@ class Index extends Controller
             echo "<script>alert('密码不相同,请重新输入。');window.location.href='/luntan/public/index.php/index/index/zhuce'</script>";
         }else{
             $user = new User();
-
             $user->name = $name;
             $user->email = $email;
             $user->password = md5(md5($password));
@@ -46,12 +45,10 @@ class Index extends Controller
             $user->ctiime = $ctime;
             $user->is_del = 0;
             $user->is_admin = 0;
-
             $user->save();
             return $this->success('恭喜注册成功');    //非常nice
         }
     }
-
     /*
      * 跳转到登陆页
      * */
@@ -81,7 +78,6 @@ class Index extends Controller
         }else{
             $this->success('密码错误，请重新登陆。','index/index/denglu');
         }
-
     }
     /*
      * 跳转到首页
@@ -135,7 +131,6 @@ class Index extends Controller
 
         $tiezi->save();
         $this->success('发帖成功','index/index/fatie');
-
     }
     /*
      * 取出对应数据表中的信息
@@ -163,8 +158,6 @@ class Index extends Controller
 
         return $this->fetch();
     }
-
-
     /*
      * 退出
      * 即删除session，跳转到登陆界面
@@ -181,6 +174,10 @@ class Index extends Controller
      * */
     public function my()
     {
+        $user_id = session('user_id');
+        $my = new My();
+        $xmy = $my->quchu($user_id);
+        $this->assign('xmy',$xmy);
         return $this->fetch();
     }
     public function shoumy(Request $request)
@@ -215,7 +212,13 @@ class Index extends Controller
      * */
     public function avatar()
     {
+        $my = new My();
+
+        $image = $my->qu(session('user_id'));
+        //var_dump($image);
+        $this->assign('image',$image);
         $this->assign('user',session('user'));
+        $this->assign('user_id',session('user_id'));
         return $this->fetch();
     }
 
