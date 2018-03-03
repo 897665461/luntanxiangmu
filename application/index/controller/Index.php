@@ -3,11 +3,10 @@ namespace app\index\controller;
 use app\index\model\User;
 use app\index\model\Tiezi;
 use app\index\model\Tag;
+use app\index\model\Reply;
 use think\Controller;
 use think\Request;
 use think\Db;
-use think\View;
-
 
 class Index extends Controller
 {
@@ -97,7 +96,11 @@ class Index extends Controller
         $this->assign('liebiao',$liebiao);
         $this->assign('fenye',$fenye);
         $this->assign('user', session('user'));
+
+
+        //echo '<pre>';
         //var_dump($liebiao);
+        //echo '</pre>';
         return $this->fetch();
     }
 
@@ -135,7 +138,8 @@ class Index extends Controller
 
     }
     /*
-     * 转到帖子回复界面
+     * 取出对应数据表中的信息
+     * 转到帖子详情界面
      * */
     public function post(Request $request)
     {
@@ -149,11 +153,16 @@ class Index extends Controller
         $biaoqian = $tag->ttag($xiangqing['0']['tag_id']);
         $this->assign('biaoqian',$biaoqian['0']['name']);
 
+        $reply = new Reply();
+        $replybiao = $reply->replybiao($id);
+        $replysum = count($replybiao);
+        $this->assign('replysum',$replysum);
+        $this->assign('replybiao',$replybiao);
 
         $this->assign('user',session('user'));
+
         return $this->fetch();
     }
-
 
 
     /*

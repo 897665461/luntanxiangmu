@@ -85,7 +85,7 @@
                     <a href="/luntan/public/index.php/index/index/my.html"> BBS </a>• 于 <abbr title="2016-06-10 02:28:36" class="timeago">{$xiangqing['create_at']}</abbr> •
                     回复
                     <a href="/luntan/public/index.php/index/index/my.html"> memory </a> 于
-                    <abbr title="2017-02-08 21:47:25" class="timeago">{$xiangqing['create_at']}</abbr>
+                    <abbr title="2017-02-08 21:47:25" class="timeago">111{$xiangqing['create_at']}</abbr>
                     •4050 阅读
                 </div>
                 <div class="clearfix"></div>
@@ -164,12 +164,12 @@
         <!-- Reply List -->
         <div class="replies panel panel-default list-panel replies-index">
             <div class="panel-heading">
-                <div class="total">回复总数: <b>25</b></div>
+                <div class="total">回复总数: <b>{$replysum}</b></div>
             </div>
 
             <div class="panel-body">
-
                 <ul class="list-group row">
+                    {foreach  $replybiao as $reply }
                     <li class="list-group-item media " id="reply11">
                         <div class="avatar pull-left">
                             <a href="my.html">
@@ -177,10 +177,9 @@
                             </a>
                         </div>
                         <div class="infos">
-
                             <div class="media-heading meta">
-                                <a href="/luntan/public/index.php/index/index/my.html" title="strdemo" class="remove-padding-left author"> strdemo </a>
-                                <abbr class="timeago" title="2016-06-14 21:19:02">2016-06-14 21:19:02</abbr>
+                                <a href="/luntan/public/index.php/index/index/my.html" title="strdemo" class="remove-padding-left author">{$reply['user_id']} </a>
+                                <abbr class="timeago" title="2016-06-14 21:19:02">回复时间{$reply['create_at']}</abbr>
                                 <a name="reply1" class="anchor" href="#reply1" aria-hidden="true">#1</a>
                                 <span class="opts pull-right">
                                     <span class="hideable">
@@ -193,11 +192,12 @@
                                 </span>
                             </div>
                             <div class="media-body markdown-reply content-body">
-                                <p>支持，不错的系统啊，加油！</p>
+                                <p>{$reply['content']}</p>
                                 <a href="">回复</a>
                             </div>
                         </div>
                     </li>
+                    {/foreach}
                 </ul>
                 <!-- Pager -->
                 <div class="pull-right" style="padding-right:20px">
@@ -209,7 +209,7 @@
             <div class="panel-heading">
                 <form name="reply" action="/luntan/public/index.php/index/replyl/reply" method="post">
                     <input type="hidden" value="{$xiangqing['id']}" name="id">
-                    <textarea name="reply" cols="130" rows="10">
+                    <textarea name="reply" cols="130" rows="10" required>
 
                     </textarea>
                     <input type="submit" value="回复">

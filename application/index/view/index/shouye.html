@@ -83,7 +83,7 @@
 
             <div class="panel-body remove-padding-horizontal">
                 <ul class="list-group row thread-list">
-                    00000
+
                     {foreach $liebiao as $tiezi}
                     <li class="list-group-item media " style="margin-top: 0px;">
                         <a class="pull-right" href="/luntan/public/index.php/index/index/post.html?id={$tiezi['id']}">
@@ -108,7 +108,7 @@
                                 <span> • </span>
 
                                 <a href="/luntan/public/index.php/index/index/thread">
-                                    {$tiezi['tag_id']}
+                                   话题分类
                                 </a>
                                 <span> • </span>
                                 <!-- <span> • </span> -->
@@ -116,20 +116,23 @@
                                 <a href="/luntan/public/index.php/index/index/tag.html">
                                     <span class="tag">tag</span>
                                 </a>
-                                    <span> • </span>
+                                    <span> • {$tiezi['tag_id']}</span>
                                 </span>
-                                <span>回复</span>
+                                <span>回复 •{$tiezi['rsum']}
+                                </span>
                                 <a href="/luntan/public/index.php/index/index/post.html?id={$tiezi['id']}">
                                     用户名
+                                    <span> • {$tiezi['user_id']}</span>
                                 </a>
-                                <span> • </span>
-                                <span class="timeago " data-toggle="tooltip" data-placement="top"
-                                      title="2017-02-08 21:47:25">时间·{$tiezi['create_at']}</span>
+
+                                <span class="timeago " data-toggle="tooltip" data-placement="top" title="2017-02-08 21:47:25">
+                                    时间·{$tiezi['create_at']}
+                                </span>
                             </div>
                         </div>
                     </li>
                     {/foreach}
-                    000
+
 
 
                 </ul>

@@ -14,6 +14,18 @@ class Tiezi extends Model
     {
         $tiaoma = ($yema-1)*10;
         $liebiao = Db::table('luntan_tiezi')->limit($tiaoma,10)->select();
+
+
+        for($i=0;$i<10;$i++) {
+            if(isset($liebiao["$i"])) {
+                $liebiao["$i"]['create_at'] = date("Y-m-d H:i:s", ceil($liebiao["$i"]['create_at']));
+                $liebiao["$i"]['user_id'] = User::id_to_n($liebiao["$i"]['user_id']);
+                $liebiao["$i"]['tag_id'] = Tag::id_to_t($liebiao["$i"]['tag_id']);
+                $liebiao["$i"]['rsum'] = Reply::id_to_sum($liebiao["$i"]['id']);
+            }
+        }
+
+
         $suoyouliebiao = Db::table('luntan_tiezi')->field('id')->select();
         $tiaoshu = count($suoyouliebiao);
         $yeshu = ceil($tiaoshu/10);

@@ -13,5 +13,11 @@ class Tag extends Model
     {
         return Db::table('luntan_tag')->field('name')->where('id','eq',$id)->select();
     }
+    static public function id_to_t($id)
+    {
+        $res = Db::table('luntan_tag')->field('name')->where('id','eq',$id)->find();//返回的是以字段名为键值的数组
+        return $res['name'];
+    }
+
 
 }
