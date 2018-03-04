@@ -12,8 +12,12 @@ class Tiezi extends Model
      * */
     public function liebiao($yema)
     {
+        $suoyouliebiao = Db::table('luntan_tiezi')->field('id')->select();
+        $tiaoshu = count($suoyouliebiao);
+        $yeshu = ceil($tiaoshu/10);
+
         $tiaoma = ($yema-1)*10;
-        $liebiao = Db::table('luntan_tiezi')->limit($tiaoma,10)->select();
+        $liebiao = Db::table('luntan_tiezi')->limit($tiaoma,10)->order('create_at desc')->select();
 
         for($i=0;$i<10;$i++) {
             if(isset($liebiao["$i"])) {
@@ -23,9 +27,7 @@ class Tiezi extends Model
                 $liebiao["$i"]['rsum'] = Reply::id_to_sum($liebiao["$i"]['id']);
             }
         }
-        $suoyouliebiao = Db::table('luntan_tiezi')->field('id')->select();
-        $tiaoshu = count($suoyouliebiao);
-        $yeshu = ceil($tiaoshu/10);
+
         $fenye = array();
         $fenye['liebiao'] = $liebiao;
         $fenye['yeshu'] = $yeshu;
@@ -40,6 +42,15 @@ class Tiezi extends Model
         $xiangqing = Db::table('luntan_tiezi')->where('id','eq',"$id")->select();
         $xiangqing[0]['create_at'] = date('Y-m-d H:i:s',ceil($xiangqing[0]['create_at']));
         $xiangqing[0]['user_id'] = User::id_to_n($xiangqing[0]['user_id']);
+        return $xiangqing;
+    }
+    /*
+    * 根据标题
+    * 返回文章的详细信息
+    * */
+    public function title($title)
+    {
+        $xiangqing = Db::table('luntan_tiezi')->where('title','eq',"$title")->select();
         return $xiangqing;
     }
     //统计帖子的总数
@@ -94,6 +105,7 @@ class Tiezi extends Model
         $res = Db::table('luntan_yuedu')->where('tie_id','eq',$tie_id)->find();
         return $res['time'];
     }
+
 
 
 }

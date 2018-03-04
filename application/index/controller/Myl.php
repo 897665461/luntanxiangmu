@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 use app\index\model\My;
+use app\index\model\Zan;
 use think\Controller;
 use think\Request;
 
@@ -27,6 +28,6 @@ class Myl extends Controller
         $my->cun($arr);
 
         echo "<script>alert('更新成功');window.location.href='/luntan/public/index.php/index/index/avatar.html'</script>";
-
     }
+
 }

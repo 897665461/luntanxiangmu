@@ -5,6 +5,7 @@ use app\index\model\User;
 use app\index\model\Tiezi;
 use app\index\model\Tag;
 use app\index\model\Reply;
+use app\index\model\Zan;
 use think\Controller;
 use think\Request;
 use think\Db;
@@ -71,10 +72,10 @@ class Index extends Controller
         if($q)
         {
             //session_start();   有自动开启sessino的配置项
-           // $this->user_id = $q['id'];这样写并不成功
+            // $this->user_id = $q['id'];这样写并不成功
             session('user_id',$q['id']);
             session('user',$res['user']);
-           $this->success('登陆成功','index/index/shouye');
+            $this->success('登陆成功','index/index/shouye');
         }else{
             $this->success('密码错误，请重新登陆。','index/index/denglu');
         }
@@ -121,20 +122,21 @@ class Index extends Controller
     /*
    * 取出对应数据表中的信息
    * 转到帖子详情界面
+   * 如果搜索根据是文章标题搜索的
    * */
-    //实验
-    public function shiyan()
-    {
-        $tiezi = new Tiezi();
-        $yuedutime =  $tiezi->yuedu(34);
-        print_r($res);
-    }
-
     public function post(Request $request)
     {
-        $id = $request->get('id');
+        //分为标题或id取出文章
+        if(!empty( $request->get('q'))) {
+            $title =  $request->get('q');
+            $tiezi = new Tiezi();
+            $xiangqing = $tiezi->title($title);
+            $id = $xiangqing[0]['id'];
+        }else {
+            $id = $request->get('id');
+            $tiezi = new Tiezi();
+        }
         //传递当前帖子信息
-        $tiezi = new Tiezi();
         $tiezi->yuedu($id);//增加阅读的次数
         $yuedutime =  $tiezi->yuetime($id);//阅读次数的传递
 
@@ -177,6 +179,11 @@ class Index extends Controller
         //回复总数
         $tie_reply_sum = $reply->tie_reply_sum($id);
         $this->assign('tie_reply_sum',$tie_reply_sum);
+        //取出赞的数量
+
+        $zan = new Zan();
+        $zan_shuliang = $zan->quzan($id);
+        $this->assign('zan_shuliang',$zan_shuliang);
         //调用帖子详情页面
         return $this->fetch();
     }

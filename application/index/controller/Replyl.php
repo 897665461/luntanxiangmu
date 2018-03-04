@@ -1,8 +1,10 @@
 <?php
 namespace app\index\controller;
 use think\Request;
-use app\index\model\Reply;
 use think\Controller;
+use app\index\model\Reply;
+use app\index\model\Zan;
+
 
 class Replyl extends controller
 {
@@ -30,6 +32,32 @@ class Replyl extends controller
             echo "<script>alert('请填写回复内容');window.location.href='/luntan/public/index.php/index/index/post.html?id=$id'</script>";
         }
 
+    }
+    public function dianzan()
+    {
+        $user_id = session('user_id');
+        $tie_id =$_GET['tid'];
+        $zan = new Zan();
+        $res = $zan->zan($user_id,$tie_id);
+        if($res==1)
+        {
+            $this->success('您已经点赞');
+        }else{
+            $this->success('点赞成功');
+        }
+    }
+    public function quxiao()
+    {
+        $user_id = session('user_id');
+        $tie_id =$_GET['tid'];
+        $zan = new Zan();
+        $res = $zan->cai($user_id,$tie_id);
+        if($res==1 )
+        {
+            $this->success('取消成功');
+        }else{
+            $this->success('取消失败');
+        }
     }
 
 }

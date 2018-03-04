@@ -17,22 +17,27 @@
             </div>
             <div id="main-nav-menu">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/luntan/public/index.php/index/index/shouye.html">
+                    <li class="active">
+                        <a href="/luntan/public/index.php/index/index/shouye.html">
                         <i class="fa fa-home"></i>
                         <span class="hidden-xs hidden-sm">首页</span></a></li>
-                    <li class="hidden-sm hidden-xs"><a href="/luntan/public/index.php/index/index/thread.html"><i class="fa fa-comments-o"></i> 话题</a></li>
-
+                    <li class="hidden-sm hidden-xs">
+                        <a href="/luntan/public/index.php/index/index/thread.html">
+                            <i class="fa fa-comments-o"></i> 话题
+                        </a>
+                    </li>
                 </ul>
             </div>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-search hidden-xs hidden-sm">
-                    <form method="GET" action="###" accept-charset="UTF-8"
-                          class="navbar-form form-search active" target="_blank">
+                    <form method="GET" action="/luntan/public/index.php/index/index/post" accept-charset="UTF-8" class="navbar-form form-search active" target="_blank">
                         <div class="form-group">
                             <input placeholder="搜索" class="form-control" name="q" type="search">
+                            <input type="submit" value="搜索">
                         </div>
                         <i class="fa fa-search"></i>
+
                     </form>
                 </li>
                 {if condition="$user"}
@@ -204,7 +209,6 @@
                 已注册用户请 <a href="/luntan/public/index.php/index/index/denglu.html">登录</a>
             </div>
             {/if}
-
         </div>
 
         <div class="panel panel-default corner-radius">
@@ -237,7 +241,6 @@
                 <li class="list-group-item">回帖数: {$replysum}</li>
             </ul>
         </div>
-
 
     </div>
     <div class="clearfix"></div>
