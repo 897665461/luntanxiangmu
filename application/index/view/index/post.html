@@ -3,14 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>论坛</title>
+    <title>慕课论坛</title>
     <link rel="stylesheet" href="/luntan/public/static/static/css/all-df86af5803.css">
-    <script>
-        function dianzan()
-        {
-            href = '/luntan/public/index.php/index/replyl/dianzan.html';
-        }
-    </script>
 </head>
 <body class="forum" data-page="forum">
 <div class="header">
@@ -33,18 +27,17 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-search hidden-xs hidden-sm">
-                    <form method="GET" action="/luntan/public/index.php/index/index/post" accept-charset="UTF-8" class="navbar-form form-search active" target="_blank">
+                    <form method="GET" action="thread.html" accept-charset="UTF-8"
+                          class="navbar-form form-search active" target="_blank">
                         <div class="form-group">
                             <input placeholder="搜索" class="form-control" name="q" type="search">
-                            <input type="submit" value="搜索">
                         </div>
                         <i class="fa fa-search"></i>
-
                     </form>
                 </li>
                 {if  condition="$user!==null"}
-                <li><a href="/luntan/public/index.php/index/index/my" id="signup-btn">{$user}</a></li>
-                <li><a href="/luntan/public/index.php/index/index/tuichu" id="login-btn">退出</a></li>
+                <li><a href="/luntan/public/index.php/index/index/zhuce" id="signup-btn">{$user}</a></li>
+                <li><a href="/luntan/public/index.php/index/index/denglu" id="login-btn">退出</a></li>
                 {else}
                 <li><a href="/luntan/public/index.php/index/index/zhuce" id="signup-btn">注册</a></li>
                 <li><a href="/luntan/public/index.php/index/index/denglu" id="login-btn">登录</a></li>
@@ -64,7 +57,7 @@
                     <a href="thread.html"> <span>站务与公告</span> </a>
                 </li>
                 <li>
-                    <strong>imooc </strong>
+                    <strong>imooc 接下来需要完善的功能</strong>
                 </li>
             </ul>
         </div>
@@ -82,21 +75,18 @@
                     </a>
                 </div>
                 <h1 class="panel-title thread-title">{$xiangqing['title']}</h1>
-
                 <div class="likes">
-                    <a href="/luntan/public/index.php/index/replyl/dianzan.html?tid={$xiangqing['id']}" data-action="like" data-type="Thread" data-url="/luntan/public/index.php/index/replyl/dianzan.html?tid=$xiangqing[0]['id']" title="赞"
-                       class="fa fa-chevron-up likeable like" data-id="10"> {$zan_shuliang}</a>
-                    <a href="/luntan/public/index.php/index/replyl/quxiao.html?tid={$xiangqing['id']}" data-action="unlike" data-type="Thread" data-url="#" title="踩" class="fa fa-chevron-down likeable like" data-id="10"></a>
+                    <a href="javascript:void(0);" data-action="like" data-type="Thread" data-url="#" title="赞"
+                       class="fa fa-chevron-up likeable like" data-id="10"> 10</a>
+                    <a href="javascript:void(0);" data-action="unlike" data-type="Thread" data-url="#" title="踩" class="fa fa-chevron-down likeable like" data-id="10"></a>
                 </div>
-
                 <div class="meta inline-block">
-                    <a href="/luntan/public/index.php/index/index/tag.html" class="remove-padding-left">  </a> •
-                    <a href="/luntan/public/index.php/index/index/my.html">  </a>{$xiangqing['user_id']}• 于
-                    <abbr title="2016-06-10 02:28:36" class="timeago">{$xiangqing['create_at']}</abbr> •
-                    发表
-                    <a href="/luntan/public/index.php/index/index/my.html">  </a>
-                    <abbr title="2017-02-08 21:47:25" class="timeago"></abbr>
-                    • 阅读次数{$yuedutime}
+                    <a href="/luntan/public/index.php/index/index/tag.html" class="remove-padding-left"> 站务与公告 </a> •
+                    <a href="/luntan/public/index.php/index/index/my.html"> BBS </a>{$xiangqing['user_id']}• 于 <abbr title="2016-06-10 02:28:36" class="timeago">{$xiangqing['create_at']}</abbr> •
+                    回复
+                    <a href="/luntan/public/index.php/index/index/my.html"> memory </a> 于
+                    <abbr title="2017-02-08 21:47:25" class="timeago">111{$xiangqing['create_at']}</abbr>
+                    •{$yuedutime} 阅读
                 </div>
                 <div class="clearfix"></div>
             </div>
