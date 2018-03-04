@@ -9,5 +9,10 @@ class User extends Model
         $res = Db::table('luntan_user')->where('id','eq',$id)->find();
         return $res['name'];
     }
+    public function usersum()
+    {
+        $res = Db::table('luntan_user')->count();
+        return $res;
+    }
 
 }

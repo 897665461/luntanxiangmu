@@ -26,4 +26,15 @@ class Reply extends Model
         $replybiao =  Db::table('luntan_reply')->where('tie_id','eq',$tie_id)->select();
         return count($replybiao);
     }
+    public function replysum()
+    {
+        return Db::table('luntan_reply')->count();
+    }
+    /*
+     * 根据帖子的id返回帖子的回复总数
+     * */
+    public function tie_reply_sum($tie_id)
+    {
+        return $tie_reply_sum = Db::table('luntan_reply')->where('tie_id','eq',$tie_id)->count();
+    }
 }

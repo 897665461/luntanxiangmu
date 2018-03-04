@@ -213,7 +213,8 @@
             </div>
             <div class="panel-body">
                 <div class="badge badge-tag-cloud">
-                    <a href="/luntan/public/index.php/index/index/tag.html">BBS</a> (7)
+                    <a href="/luntan/public/index.php/index/index/tag.html">{$hot_tag_name}</a>
+                    ({$hot_tag_tiaoshu})
                 </div>
             </div>
         </div>
@@ -225,15 +226,15 @@
                 猪有猪的思想，人有人的思想。如果猪有人的思想，那它就不是猪了——是八戒!
             </div>
         </div>
-
         <div class="panel panel-default corner-radius">
             <div class="panel-heading">
                 <h3 class="panel-title">统计信息</h3>
             </div>
             <ul class="list-group">
-                <li class="list-group-item">社区会员: 747</li>
-                <li class="list-group-item">主题数: 95</li>
-                <li class="list-group-item">回帖数: 218</li>
+                <li class="list-group-item">社区会员:{$usersum}</li>
+                <li class="list-group-item">社区发帖数:{$tiezisum}</li>
+                <li class="list-group-item">主题数: {$tagsum}</li>
+                <li class="list-group-item">回帖数: {$replysum}</li>
             </ul>
         </div>
 

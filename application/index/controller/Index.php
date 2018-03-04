@@ -85,6 +85,7 @@ class Index extends Controller
     public function shouye(Request $request)
     {
 
+        //传递当前页的信息
         $yema = empty($_GET['yema'])?1:$_GET['yema'];
         $tiezi = new Tiezi();
         $fenye = $tiezi->liebiao($yema);
@@ -92,14 +93,93 @@ class Index extends Controller
         $this->assign('liebiao',$liebiao);
         $this->assign('fenye',$fenye);
         $this->assign('user', session('user'));
+        //统计信息传递
+        $tiezisum = $tiezi->tiezisum();
+        $this->assign('tiezisum',$tiezisum);
 
+        $user = new User();
+        $usersum = $user->usersum();
+        $this->assign('usersum',$usersum);
 
-        //echo '<pre>';
-        //var_dump($liebiao);
-        //echo '</pre>';
+        $tag = new Tag();
+        $tagsum = $tag->tagsum();
+        $this->assign('tagsum',$tagsum);
+
+        $reply = new Reply();
+        $replysum = $reply->replysum();
+        $this->assign('replysum',$replysum);
+
+        //传递热门标签
+        $hot_tag = $tiezi->hottag();
+        $hot_tag_id =$hot_tag['id'];
+        $hot_tag_name =$tag->id_to_t( $hot_tag_id );
+        $this->assign('hot_tag_name',$hot_tag_name);
+        $this->assign('hot_tag_tiaoshu',$hot_tag['tiaoshu']);
+        //调用首页界面
         return $this->fetch();
     }
+    /*
+   * 取出对应数据表中的信息
+   * 转到帖子详情界面
+   * */
+    //实验
+    public function shiyan()
+    {
+        $tiezi = new Tiezi();
+        $yuedutime =  $tiezi->yuedu(34);
+        print_r($res);
+    }
 
+    public function post(Request $request)
+    {
+        $id = $request->get('id');
+        //传递当前帖子信息
+        $tiezi = new Tiezi();
+        $tiezi->yuedu($id);//增加阅读的次数
+        $yuedutime =  $tiezi->yuetime($id);//阅读次数的传递
+
+        $this->assign('yuedutime',$yuedutime);
+
+        $xiangqing = $tiezi->xiangqing($id);
+        $this->assign('xiangqing',$xiangqing[0]);
+
+        $tag = new Tag();
+        $biaoqian = $tag->ttag($xiangqing['0']['tag_id']);
+        $this->assign('biaoqian',$biaoqian['0']['name']);
+
+        $reply = new Reply();
+        $replybiao = $reply->replybiao($id);
+        $replysum = count($replybiao);
+        $this->assign('replysum',$replysum);
+        $this->assign('replybiao',$replybiao);
+        $this->assign('user',session('user'));
+        //统计信息传递
+        $tiezisum = $tiezi->tiezisum();
+        $this->assign('tiezisum',$tiezisum);
+
+        $user = new User();
+        $usersum = $user->usersum();
+        $this->assign('usersum',$usersum);
+
+        $tag = new Tag();
+        $tagsum = $tag->tagsum();
+        $this->assign('tagsum',$tagsum);
+
+        $reply = new Reply();
+        $replysum = $reply->replysum();
+        $this->assign('replysum',$replysum);
+        //传递热门标签
+        $hot_tag = $tiezi->hottag();
+        $hot_tag_id =$hot_tag['id'];
+        $hot_tag_name =$tag->id_to_t( $hot_tag_id );
+        $this->assign('hot_tag_name',$hot_tag_name);
+        $this->assign('hot_tag_tiaoshu',$hot_tag['tiaoshu']);
+        //回复总数
+        $tie_reply_sum = $reply->tie_reply_sum($id);
+        $this->assign('tie_reply_sum',$tie_reply_sum);
+        //调用帖子详情页面
+        return $this->fetch();
+    }
     /*
      * 跳转到发帖页面
      * */
@@ -107,10 +187,9 @@ class Index extends Controller
     {
         $tag = new Tag();
         $tag = $tag->tag();
-        //var_dump($tag);
         $this->assign('user', session('user'));
         $this->assign('tag',$tag);
-       return $this->fetch();
+        return $this->fetch();
     }
     /*
      * 从相应的数据库中取出相应信息
@@ -133,32 +212,6 @@ class Index extends Controller
         $this->success('发帖成功','index/index/fatie');
     }
     /*
-     * 取出对应数据表中的信息
-     * 转到帖子详情界面
-     * */
-    public function post(Request $request)
-    {
-        $id = $request->get('id');
-
-        $tiezi = new Tiezi();
-        $xiangqing = $tiezi->xiangqing($id);
-        $this->assign('xiangqing',$xiangqing[0]);
-
-        $tag = new Tag();
-        $biaoqian = $tag->ttag($xiangqing['0']['tag_id']);
-        $this->assign('biaoqian',$biaoqian['0']['name']);
-
-        $reply = new Reply();
-        $replybiao = $reply->replybiao($id);
-        $replysum = count($replybiao);
-        $this->assign('replysum',$replysum);
-        $this->assign('replybiao',$replybiao);
-
-        $this->assign('user',session('user'));
-
-        return $this->fetch();
-    }
-    /*
      * 退出
      * 即删除session，跳转到登陆界面
      * */
@@ -167,22 +220,42 @@ class Index extends Controller
         $user = session('user',null);//第二个参数不能为'',否则和session('user')是一样的
         return $this->fetch('denglu');
     }
-
-
     /*
      * 跳转到我的主页
      * */
     public function my()
     {
+
         $user_id = session('user_id');
+
         $my = new My();
+        $image = $my->qu(session('user_id'));
+        $this->assign('image',$image);
+
         $xmy = $my->quchu($user_id);
         $this->assign('xmy',$xmy);
+
+        $this->assign('user',session('user'));
+        $this->assign('user_id',session('user_id'));
+
         return $this->fetch();
     }
     public function shoumy(Request $request)
     {
         var_dump($request->post());
+    }
+    /*
+     * 转到头像界面
+     * */
+    public function avatar()
+    {
+        $my = new My();
+        $image = $my->qu(session('user_id'));
+        $this->assign('image',$image);
+
+        $this->assign('user',session('user'));
+        $this->assign('user_id',session('user_id'));
+        return $this->fetch();
     }
     /*
      * 跳转到修改密码界面
@@ -207,21 +280,6 @@ class Index extends Controller
         $this->assign('user',session('user'));
         return $this->fetch();
     }
-    /*
-     * 转到头像界面
-     * */
-    public function avatar()
-    {
-        $my = new My();
-
-        $image = $my->qu(session('user_id'));
-        //var_dump($image);
-        $this->assign('image',$image);
-        $this->assign('user',session('user'));
-        $this->assign('user_id',session('user_id'));
-        return $this->fetch();
-    }
-
     /*
      * 转到帖子积分界面
      * */

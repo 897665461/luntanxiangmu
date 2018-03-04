@@ -72,14 +72,14 @@
 <div class="users-show">
     <div class="col-md-3 box">
     <div style="text-align: center;">
-    <img src="/luntan/public/static/images/11.png" class="img-thumbnail users-show-avatar upload-btn" style="width: 206px;margin: 4px 4px 15px;min-height:190px;cursor: pointer;">
+    <img src="/luntan/public/static/images/{$image}" class="img-thumbnail users-show-avatar upload-btn" style="width: 206px;margin: 4px 4px 15px;min-height:190px;cursor: pointer;">
 </div>
 
 <dl class="dl-horizontal">
-    <dt><lable>&nbsp; </lable></dt><dd> ID 967</dd>
-    <dt><label>用户名:</label></dt><dd><strong>kphcdr</strong></dd>
+    <dt><lable>&nbsp; </lable></dt><dd> ID {$user_id}</dd>
+    <dt><label>用户名:</label></dt><dd><strong>{$user}</strong></dd>
     <dt><label>注册:</label></dt>
-    <dd><span>2017-02-12 23:48:44</span></dd>
+    <dd><span>2017-02-12 23:48:44345</span></dd>
   </dl>
 <div class="clearfix"></div>
       <a class="btn btn-primary btn-block" href="/luntan/public/index.php/index/index/my.html" id="user-edit-button">
@@ -101,8 +101,7 @@
           <form method="POST" action="/luntan/public/index.php/index/myl/shoumy" accept-charset="UTF-8">
               <input name="_method" type="hidden" value="PATCH">
               <input name="_token" type="hidden" value="BAnCy9yzQxp30BiIkeU58OMjR5uWeDM9dCSMNwKH">
-              <h5>
-              <i class="fa fa-tasks"></i>&nbsp;&nbsp;个人信息</h5>
+              <h5><i class="fa fa-tasks"></i>&nbsp;&nbsp;个人信息</h5>
               <div class="form-group">
                   <input class="form-control" placeholder="昵称" name="name" type="text" value="44545">
               </div>
