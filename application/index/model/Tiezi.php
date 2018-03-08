@@ -14,13 +14,14 @@ class Tiezi extends Model
     {
         $tiaoma = ($yema-1)*10;
         $liebiao = Db::table('luntan_tiezi')->limit($tiaoma,10)->order('create_at desc')->select();
-
+        $zan = new Zan();
         for($i=0;$i<10;$i++) {
             if(isset($liebiao["$i"])) {
                 $liebiao["$i"]['create_at'] = date("Y-m-d H:i:s", ceil($liebiao["$i"]['create_at']));
                 $liebiao["$i"]['user_id'] = User::id_to_n($liebiao["$i"]['user_id']);
                 $liebiao["$i"]['tag_id'] = Tag::id_to_t($liebiao["$i"]['tag_id']);
                 $liebiao["$i"]['rsum'] = Reply::id_to_sum($liebiao["$i"]['id']);
+                $liebiao["$i"]['zanshu'] = $zan->quzan( $liebiao["$i"]['id']);
             }
         }
         $suoyouliebiao = Db::table('luntan_tiezi')->field('id')->select();
@@ -28,6 +29,91 @@ class Tiezi extends Model
         $yeshu = ceil($tiaoshu/10);
         $fenye = array();
         $fenye['liebiao'] = $liebiao;
+        $fenye['yeshu'] = $yeshu;
+        $fenye['yema'] = $yema;
+        return $fenye;
+    }
+    /*
+     * 根据赞的数量的分页系统
+     * */
+    public function zanfenye($yema)
+    {
+        $liebiao = Db::table('luntan_tiezi')->order('create_at desc')->select();
+        $zan = new Zan();
+        //构建列表详情的数组
+        for($i=0;$i<count($liebiao);$i++) {
+            if(isset($liebiao["$i"])) {
+                $liebiao["$i"]['create_at'] = date("Y-m-d H:i:s", ceil($liebiao["$i"]['create_at']));
+                $liebiao["$i"]['user_id'] = User::id_to_n($liebiao["$i"]['user_id']);
+                $liebiao["$i"]['tag_id'] = Tag::id_to_t($liebiao["$i"]['tag_id']);
+                $liebiao["$i"]['rsum'] = Reply::id_to_sum($liebiao["$i"]['id']);
+                $liebiao["$i"]['zanshu'] = $zan->quzan( $liebiao["$i"]['id']);
+            }
+        }
+        //对数组进行排序
+        for($i=0;$i<count($liebiao);$i++) {
+            if(isset($liebiao["$i"])) {
+               $arr["$i"] = $liebiao["$i"]['zanshu'];
+            }
+        }
+        arsort($arr);
+        $yeshu = $liebiaozan['0'] = ceil(count($liebiao)/10);
+        foreach($arr as $key=>$value)
+        {
+            $liebiaozan[] = $liebiao["$key"];
+
+        }
+        $tiaoma = ($yema-1)*10+1;
+        for($i=$tiaoma;$i<$tiaoma+10;$i++)
+        {
+            $zanbiao[] = $liebiaozan[$i];
+        }
+        // $zanbiao['yeshu'] = $yeshu;
+
+        $fenye['liebiao'] = $zanbiao;
+        $fenye['yeshu'] = $yeshu;
+        $fenye['yema'] = $yema;
+        return $fenye;
+
+    }
+    /*
+     * 最多回复的分页系统
+     * */
+    public function huifenye($yema)
+    {
+        $liebiao = Db::table('luntan_tiezi')->order('create_at desc')->select();
+        $reply = new Reply();
+        //构建列表详情的数组
+        for($i=0;$i<count($liebiao);$i++) {
+            if(isset($liebiao["$i"])) {
+                $liebiao["$i"]['create_at'] = date("Y-m-d H:i:s", ceil($liebiao["$i"]['create_at']));
+                $liebiao["$i"]['user_id'] = User::id_to_n($liebiao["$i"]['user_id']);
+                $liebiao["$i"]['tag_id'] = Tag::id_to_t($liebiao["$i"]['tag_id']);
+                $liebiao["$i"]['rsum'] = Reply::id_to_sum($liebiao["$i"]['id']);
+                $liebiao["$i"]['zanshu'] = $reply->tie_reply_sum( $liebiao["$i"]['id']);
+            }
+        }
+        //对数组进行排序
+        for($i=0;$i<count($liebiao);$i++) {
+            if(isset($liebiao["$i"])) {
+                $arr["$i"] = $liebiao["$i"]['zanshu'];
+            }
+        }
+        arsort($arr);
+        $yeshu = $liebiaozan['0'] = ceil(count($liebiao)/10);
+        foreach($arr as $key=>$value)
+        {
+            $liebiaozan[] = $liebiao["$key"];
+
+        }
+        $tiaoma = ($yema-1)*10+1;
+        for($i=$tiaoma;$i<$tiaoma+10;$i++)
+        {
+            $zanbiao[] = $liebiaozan[$i];
+        }
+        // $zanbiao['yeshu'] = $yeshu;
+
+        $fenye['liebiao'] = $zanbiao;
         $fenye['yeshu'] = $yeshu;
         $fenye['yema'] = $yema;
         return $fenye;
@@ -62,7 +148,6 @@ class Tiezi extends Model
                 $tagtiaoshu = $tagtiaoshuz;
                 $hottag['id'] = $tagid['id'];
                 $hottag['tiaoshu'] = $tagtiaoshu;
-
             }
         }
         return $hottag;

@@ -109,7 +109,6 @@ class Index extends Controller
         $reply = new Reply();
         $replysum = $reply->replysum();
         $this->assign('replysum',$replysum);
-
         //传递热门标签
         $hot_tag = $tiezi->hottag();
         $hot_tag_id =$hot_tag['id'];
@@ -118,6 +117,75 @@ class Index extends Controller
         $this->assign('hot_tag_tiaoshu',$hot_tag['tiaoshu']);
         //调用首页界面
         return $this->fetch();
+    }
+    /*
+     * 按照赞的排序来显示首页页面
+     * */
+    public function zan()
+    {
+        $yema = empty($_GET['yema'])?1:$_GET['yema'];
+        $tiezi = new Tiezi();
+        $fenye = $tiezi->zanfenye($yema);
+        $liebiao = array_shift($fenye);
+        $this->assign('liebiao',$liebiao);
+        $this->assign('fenye',$fenye);
+        $this->assign('user', session('user'));
+        //统计信息传递
+        $tiezisum = $tiezi->tiezisum();
+        $this->assign('tiezisum',$tiezisum);
+
+        $user = new User();
+        $usersum = $user->usersum();
+        $this->assign('usersum',$usersum);
+
+        $tag = new Tag();
+        $tagsum = $tag->tagsum();
+        $this->assign('tagsum',$tagsum);
+
+        $reply = new Reply();
+        $replysum = $reply->replysum();
+        $this->assign('replysum',$replysum);
+        //传递热门标签
+        $hot_tag = $tiezi->hottag();
+        $hot_tag_id =$hot_tag['id'];
+        $hot_tag_name =$tag->id_to_t( $hot_tag_id );
+        $this->assign('hot_tag_name',$hot_tag_name);
+        $this->assign('hot_tag_tiaoshu',$hot_tag['tiaoshu']);
+        //调用首页界面
+        return $this->fetch('shouye');
+    }
+    public function hui()
+    {
+        $yema = empty($_GET['yema'])?1:$_GET['yema'];
+        $tiezi = new Tiezi();
+        $fenye = $tiezi->huifenye($yema);
+        $liebiao = array_shift($fenye);
+        $this->assign('liebiao',$liebiao);
+        $this->assign('fenye',$fenye);
+        $this->assign('user', session('user'));
+        //统计信息传递
+        $tiezisum = $tiezi->tiezisum();
+        $this->assign('tiezisum',$tiezisum);
+
+        $user = new User();
+        $usersum = $user->usersum();
+        $this->assign('usersum',$usersum);
+
+        $tag = new Tag();
+        $tagsum = $tag->tagsum();
+        $this->assign('tagsum',$tagsum);
+
+        $reply = new Reply();
+        $replysum = $reply->replysum();
+        $this->assign('replysum',$replysum);
+        //传递热门标签
+        $hot_tag = $tiezi->hottag();
+        $hot_tag_id =$hot_tag['id'];
+        $hot_tag_name =$tag->id_to_t( $hot_tag_id );
+        $this->assign('hot_tag_name',$hot_tag_name);
+        $this->assign('hot_tag_tiaoshu',$hot_tag['tiaoshu']);
+        //调用首页界面
+        return $this->fetch('shouye');
     }
     /*
      * 跳转到帖子的详情界面
