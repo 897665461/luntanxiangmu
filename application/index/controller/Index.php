@@ -5,6 +5,7 @@ use app\index\model\User;
 use app\index\model\Tiezi;
 use app\index\model\Tag;
 use app\index\model\Reply;
+use app\index\model\Zan;
 use think\Controller;
 use think\Request;
 use think\Db;
@@ -175,6 +176,10 @@ class Index extends Controller
         //回复总数
         $tie_reply_sum = $reply->tie_reply_sum($id);
         $this->assign('tie_reply_sum',$tie_reply_sum);
+        //赞的信息
+        $zan = new Zan();
+        $zanshu = $zan->quzan($id);
+        $this->assign('zanshu',$zanshu);
         //调用帖子详情页面
         return $this->fetch();
     }

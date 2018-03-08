@@ -13,7 +13,7 @@ class Tiezi extends Model
     public function liebiao($yema)
     {
         $tiaoma = ($yema-1)*10;
-        $liebiao = Db::table('luntan_tiezi')->limit($tiaoma,10)->select();
+        $liebiao = Db::table('luntan_tiezi')->limit($tiaoma,10)->order('create_at desc')->select();
 
         for($i=0;$i<10;$i++) {
             if(isset($liebiao["$i"])) {

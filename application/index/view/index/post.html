@@ -20,7 +20,8 @@
                     </a>
                     </li>
                     <li class="hidden-sm hidden-xs active">
-                        <a href="/luntan/public/index.php/index/index/thread.html"><i class="fa fa-comments-o"></i> 话题</a>
+                        <a href="/luntan/public/index.php/index/index/thread.html">
+                            <i class="fa fa-comments-o"></i> 话题</a>
                     </li>
                 </ul>
             </div>
@@ -54,10 +55,10 @@
                     <a href="/luntan/public/index.php/index/index/shouye">首页</a>
                 </li>
                 <li>
-                    <a href="thread.html"> <span>站务与公告</span> </a>
+                    <a href="/luntan/public/index.php/index/index/thread.html"> <span>站务与公告</span> </a>
                 </li>
                 <li>
-                    <strong>imooc 接下来需要完善的功能</strong>
+                    <strong>论坛</strong>
                 </li>
             </ul>
         </div>
@@ -76,16 +77,17 @@
                 </div>
                 <h1 class="panel-title thread-title">{$xiangqing['title']}</h1>
                 <div class="likes">
-                    <a href="/public/index.php/index/replyl/dianzan?id={$xiangqing['id']}" data-action="like" data-type="Thread" data-url="#" title="赞"
-                       class="fa fa-chevron-up likeable like" data-id="10"> 10</a>
-                    <a href="/public/index.php/index/replyl/quxiao?id={$xiangqing['id']}" data-action="unlike" data-type="Thread" data-url="#" title="踩" class="fa fa-chevron-down likeable like" data-id="10"></a>
+                    <a href="/luntan/public/index.php/index/replyl/dianzan?tid={$xiangqing['id']}" data-action="like" data-type="Thread" data-url="#" title="赞"
+                       class="fa fa-chevron-up likeable like" data-id="10"> {$zanshu}</a>
+                    <a href="/luntan/public/index.php/index/replyl/quxiao?tid={$xiangqing['id']}" data-action="unlike" data-type="Thread" data-url="#" title="踩" class="fa fa-chevron-down likeable like" data-id="10"></a>
                 </div>
                 <div class="meta inline-block">
-                    <a href="/luntan/public/index.php/index/index/tag.html" class="remove-padding-left"> 站务与公告 </a> •
-                    <a href="/luntan/public/index.php/index/index/my.html"> BBS </a>{$xiangqing['user_id']}• 于 <abbr title="2016-06-10 02:28:36" class="timeago">{$xiangqing['create_at']}</abbr> •
-                    回复
-                    <a href="/luntan/public/index.php/index/index/my.html"> memory </a> 于
-                    <abbr title="2017-02-08 21:47:25" class="timeago">111{$xiangqing['create_at']}</abbr>
+                    <a href="/luntan/public/index.php/index/index/tag.html" class="remove-padding-left"> 作者 </a> •
+                    <a href="/luntan/public/index.php/index/index/my.html">  </a>{$xiangqing['user_id']}• 于
+                    <abbr title="2016-06-10 02:28:36" class="timeago">{$xiangqing['create_at']}</abbr> •
+                    创建
+                    <a href="/luntan/public/index.php/index/index/my.html"> </a>
+                    <abbr title="2017-02-08 21:47:25" class="timeago"></abbr>
                     •{$yuedutime} 阅读
                 </div>
                 <div class="clearfix"></div>
