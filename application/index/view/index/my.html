@@ -30,24 +30,27 @@
           </ul>
         </div>
           <ul class="nav user-bar navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">kphcdr 5<span class="caret"></span></a>
-            <button class="navbar-toggle" type="button" data-toggle="dropdown" role="button" aria-expanded="false">
-              <span class="sr-only">Toggle</span>
-              <i class="fa fa-reorder"></i>
-            </button>
-            <ul class="dropdown-menu" role="menu"><li class=""><a href="/luntan/public/index.php/index/index/my">我的主页</a></li>
-            <li><div class='divider'></div></li>
-                <li><a href="my.html">个人设置</a></li>
-
-                <li><a href="score.html">我的积分</a></li>
-                <li class='divider'></li>
-                <li><a href="/luntan/public/index.php/index/index/qshouye" onclick=" return confirm('你确定要退出吗?')"><i class="fa fa-sign-out"></i> 退出
-                </a>
-                </li>
-            </ul>
-          </li>
-        </ul>
+              <li class="dropdown">
+                  <a href="#" onclick="menu()"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                      {$user}
+                      <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu1" role="menu" id="menu" style="display: none">
+                      <li class="">
+                          <a href="/luntan/public/index.php/index/index/my">我的主页</a></li>
+                      <li>
+                          <div class='divider'></div>
+                      </li>
+                      <li><a href="my.html">个人设置</a></li>
+                      <li><a href="score.html">我的积分</a></li>
+                      <li class='divider'></li>
+                      <li>
+                          <a href="###" onclick="menud()">
+                              <i class="fa fa-sign-out"></i> 退出 </a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
       
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-search hidden-xs hidden-sm">
@@ -95,7 +98,7 @@
           <div class="panel-body "><ul class="nav nav-tabs" role="tablist"><li  class="active" >
               <a href="my.html">个人信息</a></li>
               <li ><a href="/luntan/public/index.php/index/index/avatar.html">头像</a></li>
-              <li ><a href="/luntan/public/index.php/index/index/my.html?tab=password">密码</a></li>
+              <li ><a href="/luntan/public/index.php/index/index/password">密码</a></li>
           </ul>
 
           <form method="POST" action="/luntan/public/index.php/index/myl/shoumy" accept-charset="UTF-8">

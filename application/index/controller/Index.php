@@ -41,13 +41,13 @@ class Index extends Controller
             $user = new User();
             $user->name = $name;
             $user->email = $email;
-            $user->password = md5(md5($password));
+            $user->password = md5(md5(trim($password)));
             $user->avatar = '';
             $user->ctiime = $ctime;
             $user->is_del = 0;
             $user->is_admin = 0;
             $user->save();
-            return $this->success('恭喜注册成功');    //非常nice
+            return $this->success('恭喜注册成功','index/index/denglu');    //非常nice
         }
     }
     /*
@@ -64,18 +64,17 @@ class Index extends Controller
     public function denglushou(Request $request)
     {
         $res = $request->post();
-        $cond = [];
-        $cond['name'] = $res['user'];
-        //$cond['password'] = md5(md5($res['password']));
 
-        $q = User::get($cond);
-        if($q)
+        $name= $res['name'];
+        $password1 = trim(md5(md5($res['password'])));
+
+        $result = User::naTopa($name);
+        $password2 = trim($result['password']);
+        if($password1==$password2)
         {
-            //session_start();   有自动开启sessino的配置项
-           // $this->user_id = $q['id'];这样写并不成功
-            session('user_id',$q['id']);
-            session('user',$res['user']);
-           $this->success('登陆成功','index/index/shouye');
+            session('user_id',$result['id']);
+            session('user',$result['name']);
+            $this->success('登陆成功','index/index/shouye');
         }else{
             $this->success('密码错误，请重新登陆。','index/index/denglu');
         }
@@ -380,6 +379,12 @@ class Index extends Controller
      * */
     public function password()
     {
+        $my = new My();
+        $image = $my->qu(session('user_id'));
+        $this->assign('image',$image);
+
+        $this->assign('user',session('user'));
+        $this->assign('user_id',session('user_id'));
         return $this->fetch();
     }
     /*
@@ -387,7 +392,23 @@ class Index extends Controller
      * */
     public function shoupassword(Request $request)
     {
-        var_dump($request->post());
+        $result = $request->post();
+        $name = session('user');
+        $res =  User::naTopa($name);
+        $password = $res['password'];
+        if($result['password1']==$result['password2']){
+            if($password==md5(md5($result['password0']))){
+                $user = new User();
+                $user->updatepa($name,md5(md5($result['password1'])));
+                $this->success('修改成功','index/index/Password');
+            }else{
+                $this->success('密码错误');
+            }
+
+        }else{
+            $this->success('密码不一致，请重新输入。');
+        }
+
     }
     /*
      *跳转到通知页面
