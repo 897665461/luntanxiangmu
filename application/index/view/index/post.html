@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>慕课论坛</title>
     <link rel="stylesheet" href="/luntan/public/static/static/css/all-df86af5803.css">
+    <script>
+        function hui(id)
+        {
+
+            var sid = 'huifu'+id;
+            document.getElementById(sid).style.display='block';
+        }
+    </script>
 </head>
 <body class="forum" data-page="forum">
 <div class="header">
     <nav class="navbar navbar-inverse navbar-fixed-top navbar-default">
         <div class="container">
             <div class="navbar-header" id="navbar-header">
-                <a href="shouye.html" class="navbar-brand"><img src="/luntan/public/static/images/logo.png"> </a>
+                <a href="shouye.html" class="navbar-brand">
+                    <img src="/luntan/public/static/images/logo.png">
+                </a>
             </div>
             <div id="main-nav-menu">
                 <ul class="nav navbar-nav">
-                    <li><a href="/luntan/public/index.php/index/index/shouye"><i class="fa fa-home"></i>
-                        <span class="hidden-xs hidden-sm">首页</span>
-                    </a>
+                    <li>
+                        <a href="/luntan/public/index.php/index/index/shouye">
+                            <i class="fa fa-home"></i>
+                            <span class="hidden-xs hidden-sm">首页</span>
+                        </a>
                     </li>
                     <li class="hidden-sm hidden-xs active">
                         <a href="/luntan/public/index.php/index/index/thread.html">
-                            <i class="fa fa-comments-o"></i> 话题</a>
+                            <i class="fa fa-comments-o"></i>话题
+                        </a>
                     </li>
                 </ul>
             </div>
-
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-search hidden-xs hidden-sm">
                     <form method="GET" action="/luntan/public/index.php/index/index/post.html" accept-charset="UTF-8" class="navbar-form form-search active" target="_blank">
@@ -55,7 +67,9 @@
                     <a href="/luntan/public/index.php/index/index/shouye">首页</a>
                 </li>
                 <li>
-                    <a href="/luntan/public/index.php/index/index/thread.html"> <span>站务与公告</span> </a>
+                    <a href="/luntan/public/index.php/index/index/thread.html">
+                        <span>站务与公告</span>
+                    </a>
                 </li>
                 <li>
                     <strong>论坛</strong>
@@ -63,13 +77,10 @@
             </ul>
         </div>
     </div>
-
     <div class="col-md-9 threads-show main-col">
-
         <!-- Thread Detial -->
         <div class="thread panel panel-default">
             <div class="infos panel-heading">
-
                 <div class="pull-right avatar">
                     <a href="/luntan/public/index.php/index/index/my">
                         <img src="/luntan/public/static/images/avatar.jpg" class="media-object img-thumbnail avatar-64"/>
@@ -150,7 +161,6 @@
                                     </textarea>
                                 </div>
                             </div>
-
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                                 <button type="submit" class="btn btn-primary">提交</button>
@@ -180,7 +190,7 @@
                             <div class="media-heading meta">
                                 <a href="/luntan/public/index.php/index/index/my.html" title="strdemo" class="remove-padding-left author">{$reply['user_id']} </a>
                                 <abbr class="timeago" title="2016-06-14 21:19:02">回复时间{$reply['create_at']}</abbr>
-                                <a name="reply1" class="anchor" href="#reply1" aria-hidden="true">#1</a>
+                                <a name="reply1" class="anchor" href="#reply1" aria-hidden="true">回复给@{$reply['reply_id']}</a>
                                 <span class="opts pull-right">
                                     <span class="hideable">
                                         <a class="fa fa-reply btn-reply2reply" data-floor=1 data-username="strdemo" href="#" title="回复 strdemo">
@@ -193,7 +203,18 @@
                             </div>
                             <div class="media-body markdown-reply content-body">
                                 <p>{$reply['content']}</p>
-                                <a href="">回复</a>
+
+                                <button type="button" onclick=" hui({$reply['id']});">回复</button>
+                                <div id="huifu{$reply['id']}" style="display: none" >
+                                    <form name="huifu{$reply['id']}" action="/luntan/public/index.php/index/replyl/reply" method="post">
+                                        <input type="text" name="reply" required><br>
+                                        <input type="hidden" name="reply_id" value="{$reply['u_id']}"><br>
+                                        <input type="hidden" name="id" value="{$reply['tie_id']}"><br>
+                                        <input type="submit" value="提交">
+                                    </form>
+                                </div>
+
+
                             </div>
                         </div>
                     </li>

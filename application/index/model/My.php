@@ -89,4 +89,5 @@ class My extends Model
         $res = Db::table('images')->where('user_id','eq',$user_id)->find();
         return $res['image'];
     }
+
 }

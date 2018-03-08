@@ -71,7 +71,7 @@
                             <i class="fa fa-thumbs-o-up"> </i> 最多按赞
                         </a>
                     </li>
-                    <li><a href="thread.html">
+                    <li><a href="/luntan/public/index.php/index/index/myhui">
                         <i class="fa fa-diamond"> </i> 等待回复
                     </a></li>
                 </ul>
@@ -89,7 +89,7 @@
                         </a>
                         <div class="avatar pull-left">
                             <a href="/luntan/public/index.php/index/index/post.html?id={$tiezi['id']}">
-                                <img class="media-object img-thumbnail avatar-48" alt="imooc" src="/luntan/public/static/images/avatar.jpg"/>
+                                <img class="media-object img-thumbnail avatar-48" alt="imooc" src="/luntan/public/static/images/{$tiezi['image']}"/>
                             </a>
                         </div>
                         <div class="infos">
@@ -130,24 +130,19 @@
                         </div>
                     </li>
                     {/foreach}
-
-
-
                 </ul>
-
             </div>
-
-          <div class="panel-footer text-right remove-padding-horizontal pager-footer">
+            <div class="panel-footer text-right remove-padding-horizontal pager-footer">
                 <!-- Pager -->
                 <ul class="pagination">
                     {if condition="$fenye['yema']!=1"}
                     <li class="disable">
-                        <a href="/luntan/public/index.php/index/index/shouye?yema=1">
+                        <a href="/luntan/public/index.php/index/index/{$type}?yema=1">
                         <span>首页</span>
                         </a>
                     </li>
                     <li class="disable">
-                        <a href="/luntan/public/index.php/index/index/shouye?yema=<?php echo ($fenye['yema']-1);?>">
+                        <a href="/luntan/public/index.php/index/index/{$type}?yema=<?php echo ($fenye['yema']-1);?>">
                             <span>上一页</span>
                         </a>
                     </li>
@@ -159,7 +154,7 @@
                     {
                     ?>
                     <li class="active">
-                        <a href="/luntan/public/index.php/index/index/shouye?yema=<?php echo $i;?>">
+                        <a href="/luntan/public/index.php/index/index/{$type}?yema=<?php echo $i;?>">
                             <span><?php echo $i; ?></span>
                         </a>
                     </li>
@@ -168,13 +163,11 @@
                     ?>
                     {if condition="$fenye['yema']!=$fenye['yeshu']"}
                     <li class="disable">
-                        <a href="/luntan/public/index.php/index/index/shouye?yema=<?php echo ($fenye['yema']+1);?>">
+                        <a href="/luntan/public/index.php/index/index/{$type}?yema=<?php echo ($fenye['yema']+1);?>">
                             <span>下一页</span>
                         </a>
                     </li>
-
-
-                    <li><a href="/luntan/public/index.php/index/index/shouye?yema=<?php echo $fenye['yeshu'];?>" rel="next">最后一页
+                    <li><a href="/luntan/public/index.php/index/index/{$type}?yema=<?php echo $fenye['yeshu'];?>" rel="next">最后一页
                     {/if}
                     </a>
                     </li>

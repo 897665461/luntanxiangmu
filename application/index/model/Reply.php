@@ -1,6 +1,7 @@
 <?php
 namespace app\index\model;
 use app\index\model\User;
+use app\index\model\Tiezi;
 use think\Model;
 use think\Db;
 class Reply extends Model
@@ -16,9 +17,10 @@ class Reply extends Model
 
         for($i=0;$i<count($replybiao);$i++) {
             $replybiao["$i"]['create_at'] = date("Y-m-d H:i:s", ceil($replybiao["$i"]['create_at']));
+            $replybiao["$i"]['u_id'] = $replybiao["$i"]['user_id'];
             $replybiao["$i"]['user_id'] = User::id_to_n( $replybiao["$i"]['user_id']);
+            $replybiao["$i"]['reply_id'] = User::id_to_n( $replybiao["$i"]['reply_id'] );
         }
-
         return $replybiao;
     }
     static public function id_to_sum($tie_id)
