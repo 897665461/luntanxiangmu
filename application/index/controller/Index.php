@@ -119,20 +119,18 @@ class Index extends Controller
         return $this->fetch();
     }
     /*
-   * 取出对应数据表中的信息
-   * 转到帖子详情界面
-   * */
-    //实验
-    public function shiyan()
-    {
-        $tiezi = new Tiezi();
-        $yuedutime =  $tiezi->yuedu(34);
-        print_r($res);
-    }
-
+     * 跳转到帖子的详情界面
+     * */
     public function post(Request $request)
     {
-        $id = $request->get('id');
+        //通过id直接返回，还是通过搜索返回
+        if($request->get('title')){
+            $title = $request->get('title');
+            $tiezi = new Tiezi();
+            $id = $tiezi->tiToid($title);
+        }else{
+            $id = $request->get('id');
+        }
         //传递当前帖子信息
         $tiezi = new Tiezi();
         $tiezi->yuedu($id);//增加阅读的次数

@@ -91,8 +91,17 @@ class Tiezi extends Model
      * */
     public function yuetime($tie_id)
     {
-        $res = Db::table('luntan_yuedu')->where('tie_id','eq',$tie_id)->find();
+        $res = Db::table('luntan_yuedu')->where('tie_id', 'eq', $tie_id)->find();
         return $res['time'];
+    }
+    /*
+     * 输入帖子的标题
+     * 返回帖子的id
+     * */
+    public function tiToid($titie)
+    {
+        $res = Db::table('luntan_tiezi')->where('title', 'eq', $titie)->find();
+        return $res['id'];
     }
 
 

@@ -27,20 +27,20 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-search hidden-xs hidden-sm">
-                    <form method="GET" action="thread.html" accept-charset="UTF-8"
-                          class="navbar-form form-search active" target="_blank">
+                    <form method="GET" action="/luntan/public/index.php/index/index/post.html" accept-charset="UTF-8" class="navbar-form form-search active" target="_blank">
                         <div class="form-group">
-                            <input placeholder="搜索" class="form-control" name="q" type="search">
+                            <input placeholder="搜索" class="form-control" name="title" type="text">
+                            <input type="submit" value="搜索">
                         </div>
                         <i class="fa fa-search"></i>
                     </form>
                 </li>
-                {if  condition="$user!==null"}
-                <li><a href="/luntan/public/index.php/index/index/zhuce" id="signup-btn">{$user}</a></li>
-                <li><a href="/luntan/public/index.php/index/index/denglu" id="login-btn">退出</a></li>
+                {if condition="$user"}
+                <li id="signup-btn1"><a href="/luntan/public/index.php/index/index/my">{$user}</a></li>
+                <li id="login-btn1"><a href="/luntan/public/index.php/index/index/tuichu">退出</a></li>
                 {else}
-                <li><a href="/luntan/public/index.php/index/index/zhuce" id="signup-btn">注册</a></li>
-                <li><a href="/luntan/public/index.php/index/index/denglu" id="login-btn">登录</a></li>
+                <li><a href="/luntan/public/index.php/index/index/zhuce.html" id="signup-btn">注册</a></li>
+                <li><a href="/luntan/public/index.php/index/index/denglu.html" id="login-btn">登录</a></li>
                 {/if}
             </ul>
         </div>
@@ -76,9 +76,9 @@
                 </div>
                 <h1 class="panel-title thread-title">{$xiangqing['title']}</h1>
                 <div class="likes">
-                    <a href="javascript:void(0);" data-action="like" data-type="Thread" data-url="#" title="赞"
+                    <a href="/public/index.php/index/replyl/dianzan?id={$xiangqing['id']}" data-action="like" data-type="Thread" data-url="#" title="赞"
                        class="fa fa-chevron-up likeable like" data-id="10"> 10</a>
-                    <a href="javascript:void(0);" data-action="unlike" data-type="Thread" data-url="#" title="踩" class="fa fa-chevron-down likeable like" data-id="10"></a>
+                    <a href="/public/index.php/index/replyl/quxiao?id={$xiangqing['id']}" data-action="unlike" data-type="Thread" data-url="#" title="踩" class="fa fa-chevron-down likeable like" data-id="10"></a>
                 </div>
                 <div class="meta inline-block">
                     <a href="/luntan/public/index.php/index/index/tag.html" class="remove-padding-left"> 站务与公告 </a> •
