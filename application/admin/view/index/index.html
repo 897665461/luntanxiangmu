@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>论坛管理界面</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td><a href="/luntan/public/index.php/admin/index/index">主页</a></td>
+        <td><a href="/luntan/public/index.php/admin/index/user">用户管理</a></td>
+        <td><a href="/luntan/public/index.php/admin/index/tiezi">帖子管理</a></td>
+    </tr>
+    <tr>
+        <td>用户数量</td>
+        <td>{$usersum}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>帖子数量</td>
+        <td>{$tiezisum}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>标签数量</td>
+        <td>{$tagsum}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>回复数量</td>
+        <td>{$replysum}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>赞数量</td>
+        <td>{$zansum}</td>
+        <td></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -245,10 +245,41 @@ class Tiezi extends Model
         $res = Db::table('luntan_tiezi')->where('title', 'eq', $titie)->find();
         return $res['id'];
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     * 输入帖子id 返回帖子的name
+     */
     public static function idToname($id)
     {
         $res = Db::table('luntan_tiezi')->where('id', 'eq', $id)->find();
         return $res['name'];
+    }
+
+    /**
+     * @param $tie_id
+     * @return int|string
+     * @throws \think\Exception
+     * 输入帖子id 将此帖子删除标志改为1
+     */
+    public function mdeltiezi($tie_id)
+    {
+        $arr['id'] = $tie_id;
+        $arr1['is_del'] = 1;
+        return Db::table('luntan_tiezi')->where($arr)->update($arr1);
+    }
+    /**
+     * @param $tie_id
+     * @return int|string
+     * @throws \think\Exception
+     * 输入帖子id 将此帖子删除标志改为0
+     */
+    public function mhuifutiezi($tie_id)
+    {
+        $arr['id'] = $tie_id;
+        $arr1['is_del'] = 0;
+        return Db::table('luntan_tiezi')->where($arr)->update($arr1);
     }
 
 

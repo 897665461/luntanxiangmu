@@ -25,6 +25,23 @@ class User extends Model
         $arr1['password'] = $password;
         Db::table('luntan_user')->where($arr)->update($arr1);
     }
+    public function users()
+    {
+        $res = Db::table('luntan_user')->select();
+        return $res;
+    }
+    public function mdel($user_id)
+    {
+        $arr['id'] = $user_id;
+        $arr1['is_del'] = 1;
+        return Db::table('luntan_user')->where($arr)->update($arr1);
+    }
+    public function mcdel($user_id)
+    {
+        $arr['id'] = $user_id;
+        $arr1['is_del'] = 0;
+        return Db::table('luntan_user')->where($arr)->update($arr1);
+    }
 
 
 }

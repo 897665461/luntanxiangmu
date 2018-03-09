@@ -37,4 +37,8 @@ class Zan extends Model
         $res['tie_id'] = $tie_id;
         return Db::table('luntan_zan')->where($res)->delete();
     }
+    public function zansum()
+    {
+        return Db::table('luntan_zan')->count();
+    }
 }

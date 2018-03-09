@@ -70,6 +70,10 @@ class Index extends Controller
 
         $result = User::naTopa($name);
         $password2 = trim($result['password']);
+        if($result['is_del'])
+        {
+            $this->success('此号已被封印','index/index/denglu');
+        }
         if($password1==$password2)
         {
             session('user_id',$result['id']);
@@ -252,8 +256,11 @@ class Index extends Controller
         $yuedutime =  $tiezi->yuetime($id);//阅读次数的传递
 
         $this->assign('yuedutime',$yuedutime);
-
         $xiangqing = $tiezi->xiangqing($id);
+        if($xiangqing[0]['is_del']==1)
+        {
+            $this->success('此贴已被封印','index/index/shouye');
+        }
         $this->assign('xiangqing',$xiangqing[0]);
 
         $tag = new Tag();
@@ -443,7 +450,4 @@ class Index extends Controller
         $this->assign('user',session('user'));
         return $this->fetch();
     }
-
-
-
 }

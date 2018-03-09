@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>帖子管理</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td><a href="/luntan/public/index.php/admin/index/index">主页</a></td>
+        <td><a href="/luntan/public/index.php/admin/index/user">用户管理</a></td>
+        <td><a href="/luntan/public/index.php/admin/index/tiezi">帖子管理</a></td>
+    </tr>
+    <tr>
+        <td>帖子id</td>
+        <td>题目</td>
+        <td>作者</td>
+        <td>创建时间</td>
+        <td>是否删除</td>
+        <td>删除</td>
+        <td>恢复</td>
+    </tr>
+    {foreach $liebiao as $tiezi}
+    <tr>
+        <td>{$tiezi['id']}</td>
+        <td>{$tiezi['title']}</td>
+        <td>{$tiezi['user_id']}</td>
+        <td>{$tiezi['create_at']}</td>
+        <td>{$tiezi['is_del']}</td>
+        <td><a href="/luntan/public/index.php/admin/index/cdeltiezi?tie_id={$tiezi['id']}">删除</a></td>
+        <td><a href="/luntan/public/index.php/admin/index/chuifutiezi?tie_id={$tiezi['id']}">恢复</a></td>
+    </tr>
+    {/foreach}
+
+</table>
+
+
+
+
+
+
+
+</body>
+</html>

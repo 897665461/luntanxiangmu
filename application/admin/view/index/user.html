@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+</head>
+<body>
+
+</body>
+</html>
+<table border="1">
+    <tr>
+        <td><a href="/luntan/public/index.php/admin/index/index">主页</a></td>
+        <td><a href="/luntan/public/index.php/admin/index/user">用户管理</a></td>
+        <td><a href="/luntan/public/index.php/admin/index/tiezi">帖子管理</a></td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>用户名</td>
+        <td>创建时间</td>
+        <td>是否删除</td>
+        <td>删除</td>
+        <td>恢复</td>
+    </tr>
+
+    {foreach $users as $user}
+    <tr>
+        <td>{$user['id']}</td>
+        <td>{$user['name']}</td>
+        <td>{$user['ctiime']}</td>
+        <td>{$user['is_del']}</td>
+        <td><a href="/luntan/public/index.php/admin/index/cdel?id={$user['id']}">删除</a></td>
+        <td><a href="/luntan/public/index.php/admin/index/cqdel?id={$user['id']}">取消删除</a></td>
+    </tr>
+    {/foreach}
+</table>
