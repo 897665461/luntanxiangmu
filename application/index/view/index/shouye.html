@@ -85,7 +85,7 @@
                     {foreach $liebiao as $tiezi}
                     <li class="list-group-item media " style="margin-top: 0px;">
                         <a class="pull-right" href="/luntan/public/index.php/index/index/post.html?id={$tiezi['id']}">
-                            <span class="badge badge-reply-count"> 25 </span>
+                            <span class="badge badge-reply-count"> {$tiezi['weihuifu']}</span>
                         </a>
                         <div class="avatar pull-left">
                             <a href="/luntan/public/index.php/index/index/post.html?id={$tiezi['id']}">
@@ -122,7 +122,6 @@
                                     用户名
                                     <span> • {$tiezi['user_id']}</span>
                                 </a>
-
                                 <span class="timeago " data-toggle="tooltip" data-placement="top" title="2017-02-08 21:47:25">
                                     时间·{$tiezi['create_at']}
                                 </span>

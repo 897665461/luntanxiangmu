@@ -17,6 +17,7 @@ class Tiezi extends Model
         $liebiao = Db::table('luntan_tiezi')->limit($tiaoma,10)->order('create_at desc')->select();
         $zan = new Zan();
         $my = new My();
+        $reply = new Reply();
         for($i=0;$i<10;$i++) {
             if(isset($liebiao["$i"])) {
                 $liebiao["$i"]['create_at'] = date("Y-m-d H:i:s", ceil($liebiao["$i"]['create_at']));
@@ -25,6 +26,7 @@ class Tiezi extends Model
                 $liebiao["$i"]['tag_id'] = Tag::id_to_t($liebiao["$i"]['tag_id']);
                 $liebiao["$i"]['rsum'] = Reply::id_to_sum($liebiao["$i"]['id']);
                 $liebiao["$i"]['zanshu'] = $zan->quzan( $liebiao["$i"]['id']);
+                $liebiao["$i"]['weihuifu'] = $reply->weihuifu($liebiao["$i"]['id']);
 
             }
         }
@@ -182,6 +184,7 @@ class Tiezi extends Model
     {
         $xiangqing = Db::table('luntan_tiezi')->where('id','eq',"$id")->select();
         $xiangqing[0]['create_at'] = date('Y-m-d H:i:s',ceil($xiangqing[0]['create_at']));
+        $xiangqing[0]['zuozhe_id'] =$xiangqing[0]['user_id'];
         $xiangqing[0]['user_id'] = User::id_to_n($xiangqing[0]['user_id']);
         return $xiangqing;
     }

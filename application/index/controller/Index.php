@@ -301,6 +301,10 @@ class Index extends Controller
         $zan = new Zan();
         $zanshu = $zan->quzan($id);
         $this->assign('zanshu',$zanshu);
+        //已回复标志修改
+        if(session('user_id')==$xiangqing[0]['zuozhe_id']) {
+            $reply->yihuifu($id);
+        }
         //调用帖子详情页面
         return $this->fetch();
     }

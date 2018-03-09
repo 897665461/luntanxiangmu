@@ -39,4 +39,23 @@ class Reply extends Model
     {
         return $tie_reply_sum = Db::table('luntan_reply')->where('tie_id','eq',$tie_id)->count();
     }
+
+    /**
+     * @param $tie_id
+     * @return int|string
+     * 输入帖子id
+     * 返回帖子未回复的数量
+     */
+    public function weihuifu($tie_id)
+    {
+        $arr['tie_id'] = $tie_id;
+        $arr['is_see'] = 0;
+        return $tie_reply_sum = Db::table('luntan_reply')->where($arr)->count();
+    }
+    public function yihuifu($tie_id)
+    {
+        $arr['tie_id'] = $tie_id;
+        $arr1['is_see'] = 1;
+        return $tie_reply_sum = Db::table('luntan_reply')->where($arr)->update($arr1);
+    }
 }
